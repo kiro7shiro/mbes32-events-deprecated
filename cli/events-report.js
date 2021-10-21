@@ -1,5 +1,6 @@
 const path = require('path')
 const term = require('terminal-kit').terminal
+const { parse } = require('../src/parse.js')
 const settings = require('../settings.json')
 
 async function reporter() {
