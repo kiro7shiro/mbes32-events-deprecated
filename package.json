@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "mbes32 events managing tool",
   "main": "index.js",
+  "bin": {
+    "events": "bin/mbes32-events.js"
+  },
   "directories": {
     "test": "test"
   },
