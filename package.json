@@ -18,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/kiro7shiro/mbes32-events/issues"
   },
-  "homepage": "https://github.com/kiro7shiro/mbes32-events#readme"
+  "homepage": "https://github.com/kiro7shiro/mbes32-events#readme",
+  "dependencies": {
+    "ajv": "^8.6.3",
+    "commander": "^8.2.0",
+    "exceljs": "^4.3.0",
+    "fuse.js": "^6.4.6",
+    "terminal-kit": "^2.1.8",
+    "xlsx-import": "^2.3.7",
+    "xlsx-renderer": "^2.4.3"
+  }
 }
