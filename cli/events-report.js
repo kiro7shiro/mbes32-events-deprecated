@@ -11,24 +11,18 @@ async function reporter() {
     const start = settings['reports-folder']
     const reportsList = list(start, { dirs: true, recurse: false })
     const reports = {}
-    const autoComplete = []
+    const menuItems = []
     for (let rCnt = 0; rCnt < reportsList.length; rCnt++) {
         const report = reportsList[rCnt]
         const name = path.basename(report)
         const file = `${report}/${name}.js`
         reports[name] = await parse(file)
-        autoComplete.push(name)
+        menuItems.push(name)
     }
 
     term('Please enter a report name: ')
 
-    const input = await term.inputField(
-        {
-            autoComplete,
-            autoCompleteHint: true,
-            autoCompleteMenu: true
-        }
-    ).promise
+    const input = await term.singleColumnMenu(menuItems).promise
     term(`\nstarting report: `).green(input)(' ...\n')
     await reports[input]()
     term.processExit()
