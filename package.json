@@ -1,0 +1,22 @@
+{
+  "name": "mbes32-events",
+  "version": "0.0.1",
+  "description": "mbes32 events managing tool",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiro7shiro/mbes32-events.git"
+  },
+  "author": "kiro7shiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiro7shiro/mbes32-events/issues"
+  },
+  "homepage": "https://github.com/kiro7shiro/mbes32-events#readme"
+}
