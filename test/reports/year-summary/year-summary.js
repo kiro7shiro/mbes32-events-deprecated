@@ -1,5 +1,7 @@
 const path = require('path')
-const { list, parse, render, validate } = require('reporter')
+const { list } = require('../../../src/list.js')
+const { render } = require('../../../src/render.js')
+const { parse } = require('../../../src/parse.js')
 const term = require('terminal-kit').terminal
 const settings = require('../../../settings.json')
 const billConfig = require('./billConfig')

@@ -1,7 +1,9 @@
 const fs = require('fs')
 const path = require('path')
 const term = require('terminal-kit').terminal
-const { list, render, parse } = require('reporter')
+const { list } = require('../../../src/list.js')
+const { render } = require('../../../src/render.js')
+const { parse } = require('../../../src/parse.js')
 const settings = require('../../../settings.json')
 
 async function createDatabase(tpkFolder) {

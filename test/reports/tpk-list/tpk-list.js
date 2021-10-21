@@ -4,7 +4,7 @@
 const fs = require('fs')
 const path = require('path')
 const term = require('terminal-kit').terminal
-const { list } = require('reporter')
+const { list } = require('../../../src/list.js')
 const settings = require('../../../settings.json')
 
 module.exports = async function tpkList() {

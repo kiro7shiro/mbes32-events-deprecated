@@ -1,5 +1,6 @@
 const path = require('path')
 const term = require('terminal-kit').terminal
+const { list } = require('../src/list.js')
 const { parse } = require('../src/parse.js')
 const settings = require('../settings.json')
 
@@ -8,7 +9,7 @@ async function reporter() {
     term.clear()
     term.green(`#`)(` events-reporter\n`)
 
-    const start = settings['reports-folder']
+    const start = path.resolve(settings['reports-folder'])
     const reportsList = list(start, { dirs: true, recurse: false })
     const reports = {}
     const menuItems = []
