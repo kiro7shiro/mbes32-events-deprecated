@@ -1,4 +1,4 @@
- {
+const databaseConfig = {
     "worksheet": "events",
     "type": "list",
     "rowOffset": 1,
@@ -28,3 +28,5 @@
         { "index": 22, "key": "2nd-security" }
     ]
 }
+
+module.exports = databaseConfig

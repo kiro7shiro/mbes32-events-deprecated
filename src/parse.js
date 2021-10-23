@@ -34,6 +34,9 @@ async function parse(filename, { config } = {}) {
             const isConfig = validateConfig(config)
             const isMultiConfig = validateMultiConfig(config)
             if (!isConfig && !isMultiConfig) {
+                console.log({
+                    errors: [...validateConfig.errors, ...validateMultiConfig.errors]
+                })
                 throw new Error(`cannot parse ${filename}, config is invalid.`)
             }
             // TODO : validate files

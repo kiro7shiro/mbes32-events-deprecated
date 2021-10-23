@@ -1,3 +1,4 @@
+const fs = require('fs')
 const path = require('path')
 const term = require('terminal-kit').terminal
 const { list } = require('../src/list.js')
@@ -21,11 +22,12 @@ async function reporter() {
         menuItems.push(name)
     }
 
-    term('Please enter a report name: ')
+    term('Please select a report: \n')
 
     const input = await term.singleColumnMenu(menuItems).promise
-    term(`\nstarting report: `).green(input)(' ...\n')
-    await reports[input]()
+    term(`\nstarting report: `).green(input.selectedText)(' ...\n')
+    await reports[input.selectedText](settings)
+    fs.writeFileSync(path.resolve('./settings.json'), JSON.stringify(settings, null, 4))
     term.processExit()
 
 }
