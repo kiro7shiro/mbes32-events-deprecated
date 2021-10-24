@@ -1,5 +1,5 @@
 {
-    "events-database": "",
+    "events-database": "/home/kiro/Development/mbes32-events/test/data/database.xlsx",
     "data-folder": "./test/data",
     "reports-folder": "./test/reports"
 }

@@ -4,11 +4,20 @@ const term = require('terminal-kit').terminal
 const { parse } = require('../../../src/parse.js')
 const { render } = require('../../../src/render.js')
 
+function JSDateToExcelDate(inDate) {
+
+    var returnDateTime = 25569.0 + ((inDate.getTime() - (inDate.getTimezoneOffset() * 60 * 1000)) / (1000 * 60 * 60 * 24));
+    return returnDateTime.toString().substr(0,5);
+
+}
+
 module.exports = async function eventsList(settings) {
 
     // import data from database
     const databaseConfig = await parse(path.resolve('./test/reports/database/database-config.js'))
-    const eventsData = await parse(settings['events-database'], { config: databaseConfig })
+    const eventsData = (await parse(settings['events-database'], { config: databaseConfig })).sort((a, b) => {
+        return a['internal-build-up'] - b['internal-build-up']
+    })
 
     // build menu options
     const years = eventsData.reduce((accu, curr) => {
@@ -20,10 +29,7 @@ module.exports = async function eventsList(settings) {
     const menuOpts = ['actual quarter ...', 'enter time period ...', ...years]
 
     term(`please select:\n`)
-    const selection = await term.singleColumnMenu(menuOpts, {
-        //style: term.inverse ,
-        selectedStyle: term.bold.green.bgGrey
-    }).promise
+    const selection = await term.singleColumnMenu(menuOpts).promise
 
     switch (true) {
         case selection.selectedText === 'actual quarter ...':
@@ -31,7 +37,7 @@ module.exports = async function eventsList(settings) {
             const year = today.getFullYear()
             const month = today.getMonth()
             let startQ = new Date(today.getFullYear(), month - 1, 1)
-            let endQ = new Date(today.getFullYear(), month + 1, 1)
+            let endQ = new Date(today.getFullYear(), month + 2, 1)
             if (month - 1 < 0) startQ = new Date(year - 1, 11, 1)
             if (month + 1 > 11) endQ = new Date(year + 1, 1, 1)
             const quarter = eventsData.filter(event => {
@@ -39,13 +45,15 @@ module.exports = async function eventsList(settings) {
                 const lessEnd = event['internal-dismantling'] <= endQ
                 return greaterStart && lessEnd
             }).map(event => {
-                const options = { year: 'numeric', month: '2-digit', day: '2-digit' }
+                /* const options = { year: 'numeric', month: '2-digit', day: '2-digit' }
                 event['internal-build-up'] = event['internal-build-up'].toLocaleDateString('de-DE', options)
                 event['external-build-up'] = event['external-build-up'].toLocaleDateString('de-DE', options)
                 event['event-from'] = event['event-from'].toLocaleDateString('de-DE', options)
                 event['event-to'] = event['event-to'].toLocaleDateString('de-DE', options)
                 event['external-dismantling'] = event['external-dismantling'].toLocaleDateString('de-DE', options)
-                event['internal-dismantling'] = event['internal-dismantling'].toLocaleDateString('de-DE', options)
+                event['internal-dismantling'] = event['internal-dismantling'].toLocaleDateString('de-DE', options) */
+                event['internal-build-up'] = Number(JSDateToExcelDate(event['internal-build-up']))
+
                 return event
             })
             /* console.log({
