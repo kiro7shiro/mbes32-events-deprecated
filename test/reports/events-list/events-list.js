@@ -7,7 +7,7 @@ const { render } = require('../../../src/render.js')
 function dateSerial(date) {
     if (typeof date !== 'object') return date
     const milsDay = 86400000
-    const base = Math.abs(new Date(1899, 11, 30).getTime()) / milsDay
+    const base = Math.abs(new Date(1900, 0, 1).getTime()) / milsDay
     const zoneOff = date.getTimezoneOffset() * 60 * 1000
     return base + (date.getTime() - zoneOff) / milsDay
 }
@@ -32,6 +32,7 @@ module.exports = async function eventsList(settings) {
     term(`please select:\n`)
     const selection = await term.singleColumnMenu(menuOpts).promise
 
+    let resultData = []
     switch (true) {
         case selection.selectedText === 'actual quarter ...':
             const today = new Date()
@@ -55,17 +56,8 @@ module.exports = async function eventsList(settings) {
                 event['internal-build-up'] = dateSerial(event['internal-build-up'])
                 return event
             })
-            /* console.log({
-                startQ,
-                endQ,
-                length: quarter.length,
-                '1st': quarter.slice(0,1),
-                'lst': quarter.slice(-1)
-            }) */
-            const templatePath = path.resolve(path.dirname(__filename), 'events-list-template.xlsx')
-            const list = await render(templatePath, { data: quarter })
-            await list.xlsx.writeFile(`${path.resolve(path.dirname(__filename))}/events-list.xlsx`)
-
+            resultData = quarter
+            
             break
         case selection.selectedText === 'enter time period ...':
 
@@ -74,6 +66,10 @@ module.exports = async function eventsList(settings) {
 
             break
     }
+
+    const templatePath = path.resolve(path.dirname(__filename), 'events-list-template.xlsx')
+    const list = await render(templatePath, { data: resultData })
+    await list.xlsx.writeFile(`${path.resolve(settings['data-folder'])}/events-list.xlsx`)
 
     return
 
