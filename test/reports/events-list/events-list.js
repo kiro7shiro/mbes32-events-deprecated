@@ -15,7 +15,7 @@ function dateSerial(date) {
 module.exports = async function eventsList(settings) {
 
     // import data from database
-    const databaseConfig = await parse(path.resolve('./test/reports/database/database-config.js'))
+    const databaseConfig = await parse(path.resolve(__dirname, '../database/database-config.js'))
     const eventsData = (await parse(settings['events-database'], { config: databaseConfig })).sort((a, b) => {
         return a['internal-build-up'] - b['internal-build-up']
     })
