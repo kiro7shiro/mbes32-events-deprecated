@@ -21,7 +21,7 @@ module.exports = async function tpkDatabase(settings) {
         const y = (await term.getCursorLocation())['y']
         const inputFilename = await term.inputField({ y, x: 2 }).promise
         const filename = path.parse(path.resolve(settings['data-folder'], inputFilename))
-        const templatePath = path.parse(path.resolve(path.dirname(__filename), 'database-template.xlsx'))
+        const templatePath = path.parse(path.resolve(__dirname, 'database-template.xlsx'))
 
         const rendered = await render(path.format(templatePath), [])
         await rendered.xlsx.writeFile(path.format(filename))
