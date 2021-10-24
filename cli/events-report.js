@@ -10,7 +10,7 @@ async function reporter() {
     term.clear()
     term.green(`#`)(` events-reporter\n`)
 
-    const start = path.resolve(settings['reports-folder'])
+    const start = path.resolve(__dirname, `../${settings['reports-folder']}`)
     const reportsList = list(start, { dirs: true, recurse: false })
     const reports = {}
     const menuItems = []
