@@ -1,7 +1,6 @@
 const fs = require('fs')
 const path = require('path')
 const { list } = require('../../../src/list.js')
-const { parse } = require('../../../src/parse.js')
 const { render } = require('../../../src/render.js')
 const { update } = require('../../../src/update.js')
 const term = require('terminal-kit').terminal
@@ -69,9 +68,11 @@ module.exports = async function tpkDatabase(settings) {
     const updater = path.resolve(path.dirname(__filename), 'update-database.js')
     const exporter = path.resolve(path.dirname(__filename), 'database-template.xlsx')
 
-    term(`\nupdating ${path.basename(settings['events-database'])} please wait ...\n`)
-    
-    const data = await update(
+    term('\n')
+    const spinner = await term.spinner()
+    term(` updating ${path.basename(settings['events-database'])} please wait ...\n`)
+
+    await update(
         settings['events-database'],
         `${path.format(dataStart)}/dataFiles.json`,
         {

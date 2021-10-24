@@ -1,14 +1,19 @@
+const parseDate = value => {
+    const [day, month, year] = value.split('.', 3).map(Number)
+    return new Date(year, month - 1, day)
+}
+
 const databaseConfig = {
     "worksheet": "events",
     "type": "list",
     "rowOffset": 1,
     "columns": [
-        { "index": 1, "key": "internal-build-up" },
-        { "index": 2, "key": "external-build-up" },
-        { "index": 3, "key": "event-from" },
-        { "index": 4, "key": "event-to" },
-        { "index": 5, "key": "external-dismantling" },
-        { "index": 6, "key": "internal-dismantling" },
+        { "index": 1, "key": "internal-build-up", mapper: parseDate },
+        { "index": 2, "key": "external-build-up", mapper: parseDate },
+        { "index": 3, "key": "event-from", mapper: parseDate },
+        { "index": 4, "key": "event-to", mapper: parseDate },
+        { "index": 5, "key": "external-dismantling", mapper: parseDate },
+        { "index": 6, "key": "internal-dismantling", mapper: parseDate },
         { "index": 7, "key": "matchcode" },
         { "index": 8, "key": "title" },
         { "index": 9, "key": "comment" },
