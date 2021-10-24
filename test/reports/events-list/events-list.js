@@ -4,11 +4,12 @@ const term = require('terminal-kit').terminal
 const { parse } = require('../../../src/parse.js')
 const { render } = require('../../../src/render.js')
 
-function JSDateToExcelDate(inDate) {
-
-    var returnDateTime = 25569.0 + ((inDate.getTime() - (inDate.getTimezoneOffset() * 60 * 1000)) / (1000 * 60 * 60 * 24));
-    return returnDateTime.toString().substr(0,5);
-
+function dateSerial(date) {
+    if (typeof date !== 'object') return date
+    const milsDay = 86400000
+    const base = Math.abs(new Date(1899, 11, 30).getTime()) / milsDay
+    const zoneOff = date.getTimezoneOffset() * 60 * 1000
+    return base + (date.getTime() - zoneOff) / milsDay
 }
 
 module.exports = async function eventsList(settings) {
@@ -45,15 +46,13 @@ module.exports = async function eventsList(settings) {
                 const lessEnd = event['internal-dismantling'] <= endQ
                 return greaterStart && lessEnd
             }).map(event => {
-                /* const options = { year: 'numeric', month: '2-digit', day: '2-digit' }
-                event['internal-build-up'] = event['internal-build-up'].toLocaleDateString('de-DE', options)
-                event['external-build-up'] = event['external-build-up'].toLocaleDateString('de-DE', options)
-                event['event-from'] = event['event-from'].toLocaleDateString('de-DE', options)
-                event['event-to'] = event['event-to'].toLocaleDateString('de-DE', options)
-                event['external-dismantling'] = event['external-dismantling'].toLocaleDateString('de-DE', options)
-                event['internal-dismantling'] = event['internal-dismantling'].toLocaleDateString('de-DE', options) */
-                event['internal-build-up'] = Number(JSDateToExcelDate(event['internal-build-up']))
-
+                event['internal-build-up'] = dateSerial(event['internal-build-up'])
+                event['external-build-up'] = dateSerial(event['external-build-up'])
+                event['event-from'] = dateSerial(event['event-from'])
+                event['event-to'] = dateSerial(event['event-to'])
+                event['external-dismantling'] = dateSerial(event['external-dismantling'])
+                event['internal-dismantling'] = dateSerial(event['internal-dismantling'])
+                event['internal-build-up'] = dateSerial(event['internal-build-up'])
                 return event
             })
             /* console.log({
