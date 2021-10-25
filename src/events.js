@@ -1,6 +1,5 @@
 const path = require('path')
-const settings = require('../settings.json')
-const { parse } = require('./parse.js')
+const Fuse = require('fuse.js')
 const { getEventsData } = require('./database.js')
 
 function isEventFolder(filename) {
@@ -28,9 +27,28 @@ function eventFolderName(filename) {
 async function searchEvent(keyword) {
     // load data
     const eventsData = await getEventsData()
-    console.log({
-        eventData: eventsData.slice(0, 1)
-    })
+    const options = {
+        // isCaseSensitive: false,
+        includeScore: true,
+        // shouldSort: true,
+        includeMatches: true,
+        // findAllMatches: false,
+        minMatchCharLength: 1,
+        // location: 0,
+        // threshold: 0.6,
+        // distance: 100,
+        // useExtendedSearch: false,
+        // ignoreLocation: false,
+        // ignoreFieldNorm: false,
+        keys: [
+            'matchcode',
+            'title'
+        ]
+    }
+
+    const fuse = new Fuse(eventsData, options)
+
+    return fuse.search(keyword)
 }
 
 module.exports = {

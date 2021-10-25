@@ -1,6 +1,4 @@
-const path = require('path')
 const { Command } = require('commander')
-const settings = require('../settings.json')
 
 const program = new Command
 
