@@ -3,7 +3,6 @@ const { list } = require('../../../src/list.js')
 const { render } = require('../../../src/render.js')
 const { parse } = require('../../../src/parse.js')
 const term = require('terminal-kit').terminal
-const settings = require('../../../settings.json')
 const billConfig = require('./billConfig')
 
 function normalize(x, { min = 0, max = 1 } = {}) {
@@ -115,14 +114,14 @@ const summaries = {
  * Report bill files of a year
  * 
  */
-module.exports = async function yearSummary() {
+module.exports = async function yearSummary(settings) {
     /* 
        // TODO : copy data from source
         ? save subcontractor enums
             ? names
             ? regex matchers for files or folders
-        TODO : create database
-            - save events            
+        DONE : create database
+        DONE : save events            
         TODO : select subcontractor
         TODO : select event
         TODO : sort files
