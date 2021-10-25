@@ -29,9 +29,9 @@ describe('events', function () {
             const result = isEventFolder(test.value)
             assert.ok(result)
         }
-        
+
     })
-    
+
     it('should return an event folder name', function () {
 
         for (let tCnt = 0; tCnt < testData.length; tCnt++) {
@@ -39,13 +39,16 @@ describe('events', function () {
             const resultName = eventFolderName(test.value)
             assert.equal(resultName, test.valid)
         }
-        
+
     })
 
     it('should find an event', async function () {
+
+        const result = await searchEvent('igw')
+        const [first] = result
         
-        const result = await searchEvent('test')
- 
+        console.log(first)
+        
     })
 
 })
