@@ -69,7 +69,9 @@ module.exports = async function eventsList(settings) {
 
     const templatePath = path.resolve(path.dirname(__filename), 'events-list-template.xlsx')
     const list = await render(templatePath, { data: resultData })
-    await list.xlsx.writeFile(`${path.resolve(settings['data-folder'])}/events-list.xlsx`)
+    const listPath = `${path.resolve(settings['data-folder'])}${path.sep}events-list.xlsx`
+    await list.xlsx.writeFile(listPath)
+    term(`\nevents list saved as: ${listPath}`)
 
     return
 

@@ -5,12 +5,15 @@ const { render } = require('../../../src/render.js')
 const { update } = require('../../../src/update.js')
 const term = require('terminal-kit').terminal
 
+const dataFilesMatcher = /tpk-daten[\s0-9\-]+\.xlsx\b/i
+
 module.exports = async function tpkDatabase(settings) {
 
     // TODO : *.json files
 
     // search for saved database file
-    if (!settings['events-database']) {
+    const check = fs.existsSync(settings['events-database'])
+    if (!check) {
 
         term(`no database file found. would you like to create one?`)
         const newDatabase = await term.singleColumnMenu(['yes', 'no']).promise
@@ -54,7 +57,7 @@ module.exports = async function tpkDatabase(settings) {
     if(dataFiles.ext) {
         files = [path.format(dataFiles)]
     }else{
-        files = list(path.format(dataStart), { matchers: [/\.xlsx\b/i] })
+        files = list(path.format(dataStart), { matchers: [dataFilesMatcher] })
     }
     if (!files.length) {
         term.red(`\nno files found.\n`)
