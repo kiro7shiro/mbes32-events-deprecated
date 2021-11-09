@@ -7,8 +7,7 @@ const settings = require('../settings.json')
 
 async function reporter() {
 
-    term.clear()
-    term.green(`#`)(` events-reporter\n`)
+    term.green(`#`)(` reports:\n`)
 
     const start = path.resolve(`${settings['reports-folder']}`)
     const reportsList = list(start, { dirs: true, recurse: false })
