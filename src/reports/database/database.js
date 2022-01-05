@@ -72,7 +72,7 @@ module.exports = async function tpkDatabase(settings) {
     const exporter = path.resolve(path.dirname(__filename), 'database-template.xlsx')
 
     term('\n')
-    const spinner = await term.spinner()
+    await term.spinner()
     term(` updating ${path.basename(settings['events-database'])} please wait ...\n`)
 
     await update(

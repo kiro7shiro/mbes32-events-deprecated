@@ -7,7 +7,8 @@ const program = new Command
 program
     .command('list [name]', { isDefault: true })
     .description('list key value pair(s)')
-    .action(async function (name) {
+    .action(function (name) {
+        term('\n')
         if (name && (name in settings)) {
             term(` ${name}:`).green(` ${settings[name]}\n`)
             term.processExit()

@@ -1,9 +1,13 @@
+const util = require('util')
 const path = require('path')
-const { list } = require('../../../src/list.js')
-const { render } = require('../../../src/render.js')
-const { parse } = require('../../../src/parse.js')
+const { list } = require('../../list.js')
+const { render } = require('../../render.js')
+const { parse } = require('../../parse.js')
+const { validate } = require('../../analyze.js')
 const term = require('terminal-kit').terminal
 const billConfig = require('./billConfig')
+
+const { matchers } = require('../../analyze.js')
 
 function normalize(x, { min = 0, max = 1 } = {}) {
     return (x - min) / (max - min)
@@ -116,12 +120,9 @@ const summaries = {
  */
 module.exports = async function yearSummary(settings) {
     /* 
-       // TODO : copy data from source
-        ? save subcontractor enums
-            ? names
-            ? regex matchers for files or folders
         DONE : create database
-        DONE : save events            
+        DONE : save events
+        TODO : enums for file and folder matchers
         TODO : select subcontractor
         TODO : select event
         TODO : sort files
@@ -129,16 +130,29 @@ module.exports = async function yearSummary(settings) {
 
     const logger = []
     const start = settings['events-folder']
-    const years = list(start, { dirs: true, recurse: false }).map(year => path.basename(year))
+    const years = list(start, { matchers: [matchers.yearFolder], dirs: true, recurse: false }).map(year => path.basename(year))
 
     term('\nPlease select a year: ')
 
     const input = await term.singleColumnMenu(years).promise
     term(`\nYou've selected: `).green(input.selectedText)(' ...\n')
 
+    term(' listing files, please wait ...')
     await term.spinner()
-    term(' listing files, please wait ...\n')
 
+    const files = list(`${start}${path.sep}${input.selectedText}`, { matchers: [matchers.bill, matchers.xlsx] })
+
+    term(`\nfound ${files.length} files ...`)
+
+    for (let fCnt = 0; fCnt < 1; fCnt++) {
+        const file = files[fCnt]
+        let errors = await validate(file, billConfig)    
+        console.log({ file, errors })
+    }
+
+    return
+
+    // TODO : adjust config for each file use validate
     // adjust config for each subcontractor
     const newlineConfig = JSON.parse(JSON.stringify(billConfig))
     const sasseConfig = JSON.parse(JSON.stringify(billConfig))
@@ -150,7 +164,7 @@ module.exports = async function yearSummary(settings) {
     wisagConfig.traffics.rowOffset = 12
     wisagConfig.sanitary.rowOffset = 15
 
-    // TODO : adjust config for each file use validate
+
     const billsNewline = list(`${start}/${input.selectedText}`, { matchers: [/nl|newline/i, /(ab)rechnung/i, /\.xlsx\b/i] })
         .map(filename => { return { filename, config: newlineConfig } })
     const billsSasse = list(`${start}/${input.selectedText}`, { matchers: [/sasse/i, /(ab)rechnung/i, /\.xlsx\b/i] })
@@ -158,7 +172,7 @@ module.exports = async function yearSummary(settings) {
     const billsWisag = list(`${start}/${input.selectedText}`, { matchers: [/wisag/i, /(ab)rechnung/i, /\.xlsx\b/i] })
         .map(filename => { return { filename, config: wisagConfig } })
 
-    const files = [...billsNewline, ...billsSasse, ...billsWisag]
+    //const files = [...billsNewline, ...billsSasse, ...billsWisag]
 
     term('found ').green(files.length)(' files...\n')
 
@@ -192,7 +206,7 @@ module.exports = async function yearSummary(settings) {
     for (let dCnt = 0; dCnt < data.length; dCnt++) {
         const fileData = data[dCnt]
         const { filename } = files[dCnt]
-        const fileSummary = { 
+        const fileSummary = {
             path: path.dirname(filename),
             filename: path.basename(filename)
         }

@@ -2,4 +2,7 @@
 
 mbes32 event managing tool
 
-- creating an events database from tpk-files
+- update database with tpk data
+- make database reports:
+    - events-list
+    - year-summary

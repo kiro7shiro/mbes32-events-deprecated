@@ -12,6 +12,7 @@ function deflate(source) {
 }
 
 function updateDatabase(target, source) {
+
     source = deflate(source)
 
     for (let sCnt = 0; sCnt < source.length; sCnt++) {

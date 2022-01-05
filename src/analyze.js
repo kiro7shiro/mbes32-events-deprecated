@@ -1,6 +1,66 @@
+const path = require('path')
 const Ajv = require("ajv")
 const ExcelJS = require('exceljs')
 const Fuse = require('fuse.js')
+
+// TODO : matchers for subcontractors and es32 filetypes
+// XTODO : subcontractors: alba, cws, newline, sasse, wisag
+// TODO : es32 filetypes: bill, order, planning
+
+const sysSepMatcher = new RegExp(`\\${path.sep}`, 'i')
+const pdfMatcher = /\.pdf$/i
+const xlsxMatcher = /\.xlsx$|\.xlsm$/i
+
+const yearFolderMatcher = new RegExp(`${sysSepMatcher.source}\\d{4}`, 'i')
+const eventFolderMatcher = new RegExp(
+    `${yearFolderMatcher.source}${sysSepMatcher.source}(eigenveranstaltung|ge2 kongresse|ge3 gast|interne vas|filmdreharbeiten|palais)${sysSepMatcher.source}[^\\n]+`,
+    'ig')
+
+const albaMatcher = /alba/i
+const cwsMatcher = /cws/i
+const newlineMatcher = /nl|newline/i
+const sasseMatcher = /sasse/i
+const wisagMatcher = /wisag/i
+
+const billMatcher = /(ab)rechnung/i
+const orderMatcher = /\d{10}|bestellung/i
+// plannings are a special case, we can't assume a pattern here
+const planningMatcher = function (value) {
+    // TODO: should return like a RegExp object
+}
+
+const matchers = {
+    sysSep: sysSepMatcher,
+    pdf: pdfMatcher,
+    xlsx: xlsxMatcher,
+    yearFolder: yearFolderMatcher,
+    eventFolder: eventFolderMatcher,
+    alba: albaMatcher,
+    cws: cwsMatcher,
+    newline: newlineMatcher,
+    sasse: sasseMatcher,
+    wisag: wisagMatcher,
+    bill: billMatcher,
+    order: orderMatcher,
+    planning: planningMatcher
+}
+
+/**
+ * Get the name of an es32 event folder
+ * @param {String} filename 
+ * @returns {String} event folder name
+ */
+matchers.eventFolder.getName = function getName(filename) {
+    this.lastIndex = 0
+    if (!this.test(filename)) return false
+    this.lastIndex = 0
+    const [match] = this.exec(filename)
+    const parts = match.split(matchers.sysSep)
+    const name = parts[parts.length - 1]
+    this.lastIndex = 0
+    return name
+}
+
 
 const columnsSchema = {
     $id: 'columns',
@@ -74,7 +134,8 @@ const validateMultiConfig = ajv.getSchema('multiConfig')
 /**
  * Validate a *.xlsx file with a configuration. Returning the differences.
  * @param {String} filename 
- * @param {String} config 
+ * @param {String} config
+ * @returns {[Object]} errors
  */
 async function validate(filename, config) {
 
@@ -102,7 +163,12 @@ async function validate(filename, config) {
             // validate a single config
             // 1. read file
             const workbook = new ExcelJS.Workbook()
-            await workbook.xlsx.readFile(filename)
+            try {
+                await workbook.xlsx.readFile(filename)    
+            } catch (error) {
+                errors.push(error)
+                break
+            }
             // 2. check if worksheet is present
             const sheetNames = workbook.worksheets.reduce(function (accu, curr) {
                 accu.push(curr.name)
@@ -135,6 +201,13 @@ async function validate(filename, config) {
             const { columns, fields } = config
             if (columns) {
                 const { rowOffset } = config || 0
+                const headers = config.columns.reduce(function (prev, curr) {
+                    if (curr.header) prev.push(curr.header)
+                    return prev
+                }, [])
+                if (headers.length) {
+                    
+                }
                 for (let cCnt = 0; cCnt < columns.length; cCnt++) {
                     const column = columns[cCnt]
                     const cell = sheet.getCell(rowOffset, column.index)
@@ -171,5 +244,6 @@ module.exports = {
     validateColumns,
     validateFields,
     validateConfig,
-    validateMultiConfig
+    validateMultiConfig,
+    matchers
 }

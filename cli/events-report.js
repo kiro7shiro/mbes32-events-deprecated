@@ -1,13 +1,19 @@
 const fs = require('fs')
 const path = require('path')
+const { Command } = require('commander')
 const term = require('terminal-kit').terminal
 const { list } = require('../src/list.js')
 const { parse } = require('../src/parse.js')
 const settings = require('../settings.json')
 
-async function reporter() {
+const program = new Command
 
-    term.green(`#`)(` reports:\n`)
+program
+    .description('make an events report')
+
+program.parse()
+
+async function reporter() {
 
     const start = path.resolve(`${settings['reports-folder']}`)
     const reportsList = list(start, { dirs: true, recurse: false })

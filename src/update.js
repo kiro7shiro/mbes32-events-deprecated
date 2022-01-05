@@ -24,15 +24,11 @@ async function update(target, source, { importer = {}, updater, exporter } = {})
     }
     if (!exporter) exporter = JSON.stringify
 
-    //console.log({ target, source, importer, updater, exporter })
-
     const targetFile = PATH.parse(PATH.resolve(target))
     const sourceData = await parse(source, { config: importer.source })
     let targetData = await parse(target, { config: importer.target })
 
     targetData = updater(targetData, sourceData)
-
-    //console.log({ targetFile, targetData, sourceData })
 
     const result = await render(exporter, { data: targetData })
 

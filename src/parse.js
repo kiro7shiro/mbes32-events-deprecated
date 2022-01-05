@@ -4,7 +4,7 @@ const { validate, validateConfig, validateMultiConfig } = require('./analyze.js'
 
 /**
  * Parse a file into a data object. 
- * @param {String} filename Filename or an array of filenames saved as *.json.
+ * @param {String} filename Filename or an array of filenames saved as *.json file.
  * @param {Object} config Configuration for parsing excel files.
  * @returns {Object} parsed data
  */

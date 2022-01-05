@@ -22,7 +22,7 @@ const billConfig = {
         "type": "list",
         "rowOffset": 13,
         "columns": [
-            { "index": 1, "key": "name", "header": "test" },
+            { "index": 1, "key": "name", "header": "Halle" },
             { "index": 2, "key": "area", "mapper": value => Number(value) },
             { "index": 3, "key": "areaRate", "mapper": value => Number(value) },
             { "index": 4, "key": "setupCleaning", "mapper": value => Number(value) },
