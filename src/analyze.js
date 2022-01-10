@@ -164,7 +164,7 @@ async function validate(filename, config) {
             // 1. read file
             const workbook = new ExcelJS.Workbook()
             try {
-                await workbook.xlsx.readFile(filename)    
+                await workbook.xlsx.readFile(filename)
             } catch (error) {
                 errors.push(error)
                 break
@@ -206,7 +206,7 @@ async function validate(filename, config) {
                     return prev
                 }, [])
                 if (headers.length) {
-                    
+                    console.log(Object.keys(sheet.lastRow))                    
                 }
                 for (let cCnt = 0; cCnt < columns.length; cCnt++) {
                     const column = columns[cCnt]

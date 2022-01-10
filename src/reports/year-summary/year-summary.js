@@ -137,17 +137,17 @@ module.exports = async function yearSummary(settings) {
     const input = await term.singleColumnMenu(years).promise
     term(`\nYou've selected: `).green(input.selectedText)(' ...\n')
 
-    term(' listing files, please wait ...')
     await term.spinner()
+    term(' listing files, please wait ...')
+    
+    const files = list(`${start}${path.sep}${input.selectedText}\\Eigenveranstaltung\\BAZAAR21`, { matchers: [matchers.bill, matchers.xlsx] })
 
-    const files = list(`${start}${path.sep}${input.selectedText}`, { matchers: [matchers.bill, matchers.xlsx] })
-
-    term(`\nfound ${files.length} files ...`)
+    term(`\nfound ${files.length} files ...\n`)
 
     for (let fCnt = 0; fCnt < 1; fCnt++) {
         const file = files[fCnt]
         let errors = await validate(file, billConfig)    
-        console.log({ file, errors })
+        //console.log({ file, errors })
     }
 
     return
