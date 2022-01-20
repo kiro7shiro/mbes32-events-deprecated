@@ -6,14 +6,12 @@ describe('list', function () {
     this.timeout(15000)
     it('should list files async', async function () {
         const start1 = 'C:\\Users\\tiedemann\\Development\\mbes32-events\\testData'
-        const start2 = 'G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2022\\GE3 Gast\\FESPA22'
+        const start2 = 'G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\REIT21'
         const start3 = '/kiro/home'
         try {
             await term.spinner()
             const files = await listAsync(start2, {
-                matchers: [
-                    /\b.xlsx/i
-                ],
+                matchers: [],
                 recurse: true,
                 dirs: false
             })

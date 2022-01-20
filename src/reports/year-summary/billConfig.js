@@ -23,7 +23,7 @@ const billConfig = {
         "rowOffset": 13,
         "columns": [
             { "index": 1, "key": "name", "header": "Halle" },
-            { "index": 2, "key": "area", "header": "Fläche", "mapper": value => Number(value) },
+            { "index": 2, "key": "area", "mapper": value => Number(value) },
             { "index": 3, "key": "areaRate", "mapper": value => Number(value) },
             { "index": 4, "key": "setupCleaning", "mapper": value => Number(value) },
             { "index": 5, "key": "preCleaning", "mapper": value => Number(value) },
@@ -39,7 +39,7 @@ const billConfig = {
         "type": "list",
         "rowOffset": 11,
         "columns": [
-            { "index": 1, "key": "name" },
+            { "index": 1, "key": "name", "header": "Fläche" },
             { "index": 2, "key": "details" },
             { "index": 3, "key": "floor", },
             { "index": 4, "key": "area", "mapper": value => Number(value) },
@@ -56,7 +56,7 @@ const billConfig = {
         "type": "list",
         "rowOffset": 14,
         "columns": [
-            { "index": 1, "key": "name" },
+            { "index": 1, "key": "name", "header": "Foyer" },
             { "index": 2, "key": "details" },
             { "index": 3, "key": "floor", },
             { "index": 4, "key": "area", "mapper": value => Number(value) },
@@ -73,7 +73,7 @@ const billConfig = {
         "type": "list",
         "rowOffset": 7,
         "columns": [
-            { "index": 1, "key": "date" },
+            { "index": 1, "key": "date"/* , "header": "Datum" */ },
             { "index": 2, "key": "service" },
             { "index": 3, "key": "workers", "mapper": value => Number(value) },
             { "index": 4, "key": "days", "mapper": value => Number(value) },
@@ -87,7 +87,7 @@ const billConfig = {
         "type": "list",
         "rowOffset": 10,
         "columns": [
-            { "index": 1, "key": "date" },
+            { "index": 1, "key": "date"/* , "header": "Datum" */ },
             { "index": 2, "key": "service" },
             { "index": 3, "key": "area", "mapper": value => Number(value) },
             { "index": 4, "key": "days", "mapper": value => Number(value) },
@@ -101,7 +101,7 @@ const billConfig = {
         "type": "list",
         "rowOffset": 7,
         "columns": [
-            { "index": 1, "key": "date" },
+            { "index": 1, "key": "date"/* , "header": "Datum" */ },
             { "index": 2, "key": "service" },
             { "index": 3, "key": "workers", "mapper": value => Number(value) },
             { "index": 4, "key": "days", "mapper": value => Number(value) },

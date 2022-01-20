@@ -35,11 +35,11 @@ async function parse(filename, { config } = {}) {
             const isMultiConfig = validateMultiConfig(config)
             if (!isConfig && !isMultiConfig) {
                 console.log({
-                    errors: [...validateConfig.errors, ...validateMultiConfig.errors]
+                    errors: [...validateConfig.errors, ...validateMultiConfig.errors],
+                    config,
                 })
                 throw new Error(`cannot parse ${filename}, config is invalid.`)
             }
-            // TODO : validate files
             const factory = new ImporterFactory
             const importer = await factory.from(PATH.format(fileData))
             if (isMultiConfig) {

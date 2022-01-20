@@ -1,6 +1,6 @@
 const util = require('util')
 const path = require('path')
-const { list } = require('../../list.js')
+const { list, listAsync } = require('../../list.js')
 const { render } = require('../../render.js')
 const { parse } = require('../../parse.js')
 const { validate } = require('../../analyze.js')
@@ -128,84 +128,51 @@ module.exports = async function yearSummary(settings) {
         TODO : sort files
     */
 
-    const logger = []
     const start = settings['events-folder']
-    const years = list(start, { matchers: [matchers.yearFolder], dirs: true, recurse: false }).map(year => path.basename(year))
-
+    const years = (await listAsync(start, { matchers: [matchers.yearFolder], dirs: true, recurse: false })).map(year => path.basename(year))
     term('\nPlease select a year: ')
-
     const input = await term.singleColumnMenu(years).promise
     term(`\nYou've selected: `).green(input.selectedText)(' ...\n')
 
-    await term.spinner()
-    term(' listing files, please wait ...')
-    
-    const files = list(`${start}${path.sep}${input.selectedText}\\Eigenveranstaltung\\BAZAAR21`, { matchers: [matchers.bill, matchers.xlsx] })
+    term('listing files, please wait ...')
+    let spinner = await term.spinner()
+    const files = await listAsync(`${start}${path.sep}${input.selectedText}\\Eigenveranstaltung`, { matchers: [matchers.bill, matchers.xlsx, matchers.sasse] })
+    spinner.hidden = true
+    term('\nfound ').green(files.length)(' files...\n')
 
-    term(`\nfound ${files.length} files ...\n`)
-
-    for (let fCnt = 0; fCnt < 1; fCnt++) {
-        const file = files[fCnt]
-        let errors = await validate(file, billConfig)    
-        //console.log({ file, errors })
-    }
-
-    return
-
-    // TODO : adjust config for each file use validate
-    // adjust config for each subcontractor
-    const newlineConfig = JSON.parse(JSON.stringify(billConfig))
-    const sasseConfig = JSON.parse(JSON.stringify(billConfig))
-    const wisagConfig = JSON.parse(JSON.stringify(billConfig))
-    sasseConfig.halls.rowOffset = 15
-    sasseConfig.traffics.rowOffset = 13
-    sasseConfig.sanitary.rowOffset = 15
-    wisagConfig.halls.rowOffset = 14
-    wisagConfig.traffics.rowOffset = 12
-    wisagConfig.sanitary.rowOffset = 15
-
-
-    const billsNewline = list(`${start}/${input.selectedText}`, { matchers: [/nl|newline/i, /(ab)rechnung/i, /\.xlsx\b/i] })
-        .map(filename => { return { filename, config: newlineConfig } })
-    const billsSasse = list(`${start}/${input.selectedText}`, { matchers: [/sasse/i, /(ab)rechnung/i, /\.xlsx\b/i] })
-        .map(filename => { return { filename, config: sasseConfig } })
-    const billsWisag = list(`${start}/${input.selectedText}`, { matchers: [/wisag/i, /(ab)rechnung/i, /\.xlsx\b/i] })
-        .map(filename => { return { filename, config: wisagConfig } })
-
-    //const files = [...billsNewline, ...billsSasse, ...billsWisag]
-
-    term('found ').green(files.length)(' files...\n')
-
-    const progressBar = term.progressBar({
-        title: 'parsing files : ',
-        eta: true,
-        percent: true,
-        syncMode: true
-    })
-
+    term('parsing files...')
+    spinner = await term.spinner()
     const data = []
-
     for (let fCnt = 0; fCnt < files.length; fCnt++) {
-        const { filename, config } = files[fCnt] || {}
-        if (filename) {
-            try {
-                const fileData = await parse(filename, { config })
-                data.push(fileData)
-            } catch (error) {
-                logger.push({ filename, error: error.toString(), stack: error.stack })
+        const filename = files[fCnt]
+        const errors = await validate(filename, billConfig)
+        const offsets = errors.filter(function (error) {
+            return error.type === 'wrongOffset'
+        })
+        if (offsets.length) {
+            for (let oCnt = 0; oCnt < offsets.length; oCnt++) {
+                const offset = offsets[oCnt]
+                const config = Object.values(billConfig).find(function (conf) {
+                    return conf.worksheet === offset.worksheet
+                })
+                config.rowOffset = offset.rowOffset
             }
         }
-        progressBar.update(normalize(fCnt, { max: files.length }))
+        let fileData
+        try {
+            fileData = await parse(filename, { config: billConfig })    
+        } catch (error) {
+            //console.error(error)
+            console.log({ error: filename })
+        }
+        
+        data.push(fileData)
     }
 
-    progressBar.stop()
-    term('\n')
-
     const summary = []
-
     for (let dCnt = 0; dCnt < data.length; dCnt++) {
         const fileData = data[dCnt]
-        const { filename } = files[dCnt]
+        const filename = files[dCnt]
         const fileSummary = {
             path: path.dirname(filename),
             filename: path.basename(filename)
@@ -218,16 +185,13 @@ module.exports = async function yearSummary(settings) {
         }
         summary.push(fileSummary)
     }
+    spinner.hidden = true
 
     const reportsFolder = settings['reports-folder']
     const template = `${reportsFolder}/year-summary/year-summary-template.xlsx`
     const exported = await render(template, { data: summary })
-    await exported.xlsx.writeFile(`${reportsFolder}/year-summary.xlsx`)
-
-    if (logger.length) console.log({ logger })
-
-    term('file saved...\n')
+    await exported.xlsx.writeFile(`${reportsFolder}\\year-summary.xlsx`)
+    term(`\nfile saved as:${reportsFolder}\\year-summary.xlsx...\n`)
 
     return
-
 }

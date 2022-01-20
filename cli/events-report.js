@@ -33,7 +33,7 @@ async function reporter() {
     term(`\nstarting report: `).green(input.selectedText)(' ...\n')
     await reports[input.selectedText](settings)
     fs.writeFileSync(path.resolve(__dirname, '../settings.json'), JSON.stringify(settings, null, 4))
-    term.processExit()
+    term.processExit(0)
 
 }
 

@@ -104,11 +104,17 @@ function listAsync(start, { matchers = [], recurse = true, dirs = false } = {}) 
                 break
             default:
                 if (stat.isDirectory() && dirs) {
-                    files.push(start)
                     if (recurse) {
                         const promises = await packPromises(absolute)
                         const results = await Promise.all(promises)
                         files.push(...results.flat())
+                    } else {
+                        const dir = (await fs.promises.readdir(absolute)).filter(async function (item) {
+                            const iStat = await fs.promises.stat(path.resolve(absolute, item))
+                            if (iStat.isDirectory()) return true
+                            return false
+                        }).map(i => path.resolve(absolute, i))
+                        files.push(...dir)
                     }
                 }else if (stat.isFile() && !dirs) {
                     files.push(start)

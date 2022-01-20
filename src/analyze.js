@@ -11,7 +11,7 @@ const sysSepMatcher = new RegExp(`\\${path.sep}`, 'i')
 const pdfMatcher = /\.pdf$/i
 const xlsxMatcher = /\.xlsx$|\.xlsm$/i
 
-const yearFolderMatcher = new RegExp(`${sysSepMatcher.source}\\d{4}`, 'i')
+const yearFolderMatcher = new RegExp(`${sysSepMatcher.source}\\d{4}$`, 'i')
 const eventFolderMatcher = new RegExp(
     `${yearFolderMatcher.source}${sysSepMatcher.source}(eigenveranstaltung|ge2 kongresse|ge3 gast|interne vas|filmdreharbeiten|palais)${sysSepMatcher.source}[^\\n]+`,
     'ig')
@@ -206,7 +206,24 @@ async function validate(filename, config) {
                     return prev
                 }, [])
                 if (headers.length) {
-                    console.log(Object.keys(sheet.lastRow))                    
+                    const cells = sheet.getRows(1, 1 + sheet.lastRow.number).reduce(function (prev, curr) {
+                        prev.push(curr.values)
+                        return prev
+                    }, [])
+                    const offset = cells.findIndex(function (row) {
+                        for (let hCnt = 0; hCnt < headers.length; hCnt++) {
+                            const head = headers[hCnt]
+                            return row.some(v => v === head)
+                        }
+                    })
+                    if (offset + 1 !== rowOffset) {
+                        errors.push({
+                            msg: `invalid file: rowOffset seems to be: ${offset + 1} not ${rowOffset}.`,
+                            rowOffset: offset + 1,
+                            type: 'wrongOffset',
+                            worksheet: sheetName
+                        })
+                    }
                 }
                 for (let cCnt = 0; cCnt < columns.length; cCnt++) {
                     const column = columns[cCnt]
