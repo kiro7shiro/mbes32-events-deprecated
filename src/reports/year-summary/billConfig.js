@@ -99,10 +99,10 @@ const billConfig = {
     "additionalService": {
         "worksheet": "diverse Zusatzarbeiten",
         "type": "list",
-        "rowOffset": 7,
+        "rowOffset": 8,
         "columns": [
-            { "index": 1, "key": "date"/* , "header": "Datum" */ },
-            { "index": 2, "key": "service" },
+            { "index": 1, "key": "date", "header": "Datum" },
+            { "index": 2, "key": "service", "header": "Leistung" },
             { "index": 3, "key": "workers", "mapper": value => Number(value) },
             { "index": 4, "key": "days", "mapper": value => Number(value) },
             { "index": 5, "key": "hours", "mapper": value => Number(value) },

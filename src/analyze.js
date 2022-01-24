@@ -3,10 +3,6 @@ const Ajv = require("ajv")
 const ExcelJS = require('exceljs')
 const Fuse = require('fuse.js')
 
-// TODO : matchers for subcontractors and es32 filetypes
-// XTODO : subcontractors: alba, cws, newline, sasse, wisag
-// TODO : es32 filetypes: bill, order, planning
-
 const sysSepMatcher = new RegExp(`\\${path.sep}`, 'i')
 const pdfMatcher = /\.pdf$/i
 const xlsxMatcher = /\.xlsx$|\.xlsm$/i
@@ -21,6 +17,7 @@ const cwsMatcher = /cws/i
 const newlineMatcher = /nl|newline/i
 const sasseMatcher = /sasse/i
 const wisagMatcher = /wisag/i
+const glassMatcher = /glas/i
 
 const billMatcher = /(ab)rechnung/i
 const orderMatcher = /\d{10}|bestellung/i
@@ -35,6 +32,7 @@ const matchers = {
     xlsx: xlsxMatcher,
     yearFolder: yearFolderMatcher,
     eventFolder: eventFolderMatcher,
+    glass: glassMatcher,
     alba: albaMatcher,
     cws: cwsMatcher,
     newline: newlineMatcher,
@@ -193,10 +191,10 @@ async function validate(filename, config) {
             if (score >= 0.001) errors.push({
                 msg: `invalid file: ${config.worksheet} is present but named inconsistent.`,
                 type: 'inconsistentNaming',
-                worksheet: sheetName
+                worksheet: config.worksheet,
+                name: sheetName,
             })
             // 3. check if fields or columns are present by testing their values
-            // TODO : validate rowOffset by searching for headers if given
             const sheet = workbook.getWorksheet(sheetName)
             const { columns, fields } = config
             if (columns) {
@@ -219,7 +217,8 @@ async function validate(filename, config) {
                     if (offset + 1 !== rowOffset) {
                         errors.push({
                             msg: `invalid file: rowOffset seems to be: ${offset + 1} not ${rowOffset}.`,
-                            rowOffset: offset + 1,
+                            rowOffset,
+                            row: offset + 1,
                             type: 'wrongOffset',
                             worksheet: sheetName
                         })

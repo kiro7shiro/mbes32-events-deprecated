@@ -1,11 +1,13 @@
-const util = require('util')
+const fs = require('fs')
 const path = require('path')
-const { list, listAsync } = require('../../list.js')
+const ExcelJS = require('exceljs')
+const { listAsync } = require('../../list.js')
 const { render } = require('../../render.js')
 const { parse } = require('../../parse.js')
 const { validate } = require('../../analyze.js')
 const term = require('terminal-kit').terminal
 const billConfig = require('./billConfig')
+const wasteConfig = require('./wasteConfig')
 
 const { matchers } = require('../../analyze.js')
 
@@ -96,8 +98,7 @@ const summaries = {
         ])
         for (let sCnt = 0; sCnt < sheetData.length; sCnt++) {
             const rowData = sheetData[sCnt]
-            const area = rowData['area']
-            result['area'] += area * rowData['hours'] * rowData['days']
+            result['area'] += rowData['area'] * rowData['hours'] * rowData['days']
         }
         return result
     },
@@ -119,14 +120,6 @@ const summaries = {
  * 
  */
 module.exports = async function yearSummary(settings) {
-    /* 
-        DONE : create database
-        DONE : save events
-        TODO : enums for file and folder matchers
-        TODO : select subcontractor
-        TODO : select event
-        TODO : sort files
-    */
 
     const start = settings['events-folder']
     const years = (await listAsync(start, { matchers: [matchers.yearFolder], dirs: true, recurse: false })).map(year => path.basename(year))
@@ -136,12 +129,16 @@ module.exports = async function yearSummary(settings) {
 
     term('listing files, please wait ...')
     let spinner = await term.spinner()
-    const files = await listAsync(`${start}${path.sep}${input.selectedText}\\Eigenveranstaltung`, { matchers: [matchers.bill, matchers.xlsx, matchers.sasse] })
+    const files = await listAsync(`${start}${path.sep}${input.selectedText}`, { matchers: [matchers.bill, matchers.xlsx] })
     spinner.hidden = true
     term('\nfound ').green(files.length)(' files...\n')
 
-    term('parsing files...')
-    spinner = await term.spinner()
+    let bar = progressBar = term.progressBar({
+        width: term.width,
+        title: 'parsing files ',
+        eta: true,
+        percent: true
+    })
     const data = []
     for (let fCnt = 0; fCnt < files.length; fCnt++) {
         const filename = files[fCnt]
@@ -149,6 +146,43 @@ module.exports = async function yearSummary(settings) {
         const offsets = errors.filter(function (error) {
             return error.type === 'wrongOffset'
         })
+        const invalidSheetNames = errors.filter(function (error) {
+            return error.type === 'inconsistentNaming'
+        })
+        // change config
+        if (invalidSheetNames.length) {
+            for (let iCnt = 0; iCnt < invalidSheetNames.length; iCnt++) {
+                const invalid = invalidSheetNames[iCnt]
+                const config = Object.values(billConfig).find(function (conf) {
+                    return conf.worksheet === invalid.worksheet
+                })
+                config.worksheet = invalid.name
+            }
+        }
+        if (offsets.length) {
+            for (let oCnt = 0; oCnt < offsets.length; oCnt++) {
+                const offset = offsets[oCnt]
+                const config = Object.values(billConfig).find(function (conf) {
+                    return conf.worksheet === offset.worksheet
+                })
+                config.rowOffset = offset.row
+            }
+        }
+
+        let fileData
+        try {
+            if (!matchers.alba.test(filename) && !matchers.glass.test(filename)) {
+                fileData = await parse(filename, { config: billConfig })
+                data.push(fileData)
+            } else {
+                data.push({})
+            }
+        } catch (error) {
+            console.log({ filename })
+            console.error(error)
+            return
+        }
+        // reset config
         if (offsets.length) {
             for (let oCnt = 0; oCnt < offsets.length; oCnt++) {
                 const offset = offsets[oCnt]
@@ -158,39 +192,42 @@ module.exports = async function yearSummary(settings) {
                 config.rowOffset = offset.rowOffset
             }
         }
-        let fileData
-        try {
-            fileData = await parse(filename, { config: billConfig })    
-        } catch (error) {
-            //console.error(error)
-            console.log({ error: filename })
+        if (invalidSheetNames.length) {
+            for (let iCnt = 0; iCnt < invalidSheetNames.length; iCnt++) {
+                const invalid = invalidSheetNames[iCnt]
+                const config = Object.values(billConfig).find(function (conf) {
+                    return conf.worksheet === invalid.name
+                })
+                config.worksheet = invalid.worksheet
+            }
         }
-        
-        data.push(fileData)
+        bar.update(normalize(fCnt, { min: 0, max: files.length - 1 }))
     }
 
     const summary = []
     for (let dCnt = 0; dCnt < data.length; dCnt++) {
         const fileData = data[dCnt]
         const filename = files[dCnt]
-        const fileSummary = {
-            path: path.dirname(filename),
-            filename: path.basename(filename)
-        }
-        for (const key in fileData) {
-            const sheetData = fileData[key]
-            if (key in summaries) {
-                fileSummary[key] = summaries[key](sheetData)
+        if (!matchers.alba.test(filename)) {
+            const fileSummary = {
+                path: path.dirname(filename),
+                filename: path.basename(filename)
             }
+            for (const key in fileData) {
+                const sheetData = fileData[key]
+                if (key in summaries) {
+                    fileSummary[key] = summaries[key](sheetData)
+                }
+            }
+            summary.push(fileSummary)
         }
-        summary.push(fileSummary)
     }
-    spinner.hidden = true
 
     const reportsFolder = settings['reports-folder']
     const template = `${reportsFolder}/year-summary/year-summary-template.xlsx`
     const exported = await render(template, { data: summary })
     await exported.xlsx.writeFile(`${reportsFolder}\\year-summary.xlsx`)
+    fs.writeFileSync(`${reportsFolder}/year-summary/summary.json`, JSON.stringify(summary, null, 4))
     term(`\nfile saved as:${reportsFolder}\\year-summary.xlsx...\n`)
 
     return
