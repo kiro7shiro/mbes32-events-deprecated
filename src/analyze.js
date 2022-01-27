@@ -59,7 +59,7 @@ matchers.eventFolder.getName = function getName(filename) {
     return name
 }
 
-
+// .xlsx configuration schemas
 const columnsSchema = {
     $id: 'columns',
     type: 'array',
@@ -129,11 +129,55 @@ const validateFields = ajv.getSchema('fields')
 const validateConfig = ajv.getSchema('config')
 const validateMultiConfig = ajv.getSchema('multiConfig')
 
+class ValidationError extends Error {
+    constructor(type, message) {
+        super(message)
+        this.type = type
+    }
+}
+
+class ValidationErrorInvalidConfig extends ValidationError {
+    constructor() {
+        super('invalidConfig', 'config is invalid')
+    }
+}
+
+class ValidationErrorSheetMissing extends ValidationError {
+    constructor(worksheet) {
+        super('sheetMissing', `${worksheet} is missing`)
+        this.worksheet = worksheet
+    }
+}
+
+class ValidationErrorInconsistentSheetName extends ValidationError {
+    constructor(worksheet, config) {
+        super('inconsistentSheetName', `invalid file: ${config.worksheet} is present but named inconsistent.`)
+        this.worksheet = worksheet
+        this.validName = config.worksheet
+    }
+}
+
+class ValidationErrorIncorrectRowOffset extends ValidationError {
+    constructor(worksheet, valid) {
+        super('incorrectRowOffset', `invalid file: rowOffset seems to be: ${valid}.`)
+        this.worksheet = worksheet
+        this.valid = valid
+    }
+}
+
+class ValidationErrorEmptyValue extends ValidationError {
+    constructor(worksheet, key) {
+        super('emptyValue', `invalid file: ${worksheet}.${key} is present but empty`)
+        this.worksheet = worksheet
+        this.key = key
+    }
+}
+
 /**
  * Validate a *.xlsx file with a configuration. Returning the differences.
  * @param {String} filename 
- * @param {String} config
- * @returns {[Object]} errors
+ * @param {Object} config
+ * @returns {[ValidationError]} errors
  */
 async function validate(filename, config) {
 
@@ -147,7 +191,7 @@ async function validate(filename, config) {
     let errors = []
     switch (true) {
         case !validColumns && !validFields && !validConfig && !validMultiConfig:
-            throw new Error(`invalid config ...`)
+            throw new ValidationErrorInvalidConfig()
 
         case !validColumns && !validFields && !validConfig:
             // validate a multi config
@@ -181,19 +225,13 @@ async function validate(filename, config) {
             })
             const sheets = fuse.search(config.worksheet)
             if (!sheets.length) {
-                errors.push({
-                    msg: `invalid file: ${config.worksheet} is not present.`,
-                    type: 'noSheet'
-                })
+                errors.push(new ValidationErrorSheetMissing(config.worksheet))
                 break
             }
             const { item: sheetName, score } = sheets[0]
-            if (score >= 0.001) errors.push({
-                msg: `invalid file: ${config.worksheet} is present but named inconsistent.`,
-                type: 'inconsistentNaming',
-                worksheet: config.worksheet,
-                name: sheetName,
-            })
+            if (score >= 0.001) {
+                errors.push(new ValidationErrorInconsistentSheetName(sheetName, config))
+            }
             // 3. check if fields or columns are present by testing their values
             const sheet = workbook.getWorksheet(sheetName)
             const { columns, fields } = config
@@ -209,42 +247,36 @@ async function validate(filename, config) {
                         return prev
                     }, [])
                     const offset = cells.findIndex(function (row) {
-                        for (let hCnt = 0; hCnt < headers.length; hCnt++) {
-                            const head = headers[hCnt]
-                            return row.some(v => v === head)
-                        }
+                        // trim off whitespace
+                        row = row.map(cell => {
+                            if (cell && cell.trim) {
+                                return cell.trim()
+                            } else {
+                                return cell
+                            }
+                        })
+                        const [head] = headers
+                        return row.indexOf(head) > -1
                     })
                     if (offset + 1 !== rowOffset) {
-                        errors.push({
-                            msg: `invalid file: rowOffset seems to be: ${offset + 1} not ${rowOffset}.`,
-                            rowOffset,
-                            row: offset + 1,
-                            type: 'wrongOffset',
-                            worksheet: sheetName
-                        })
+                        errors.push(new ValidationErrorIncorrectRowOffset(sheetName, offset + 1))
                     }
                 }
                 for (let cCnt = 0; cCnt < columns.length; cCnt++) {
                     const column = columns[cCnt]
-                    const cell = sheet.getCell(rowOffset, column.index)
-                    if (!cell.value) errors.push({
-                        msg: `invalid file: ${sheetName}.${column.key} is present but empty`,
-                        type: 'emptyValue',
-                        worksheet: sheetName,
-                        key: column.key
-                    })
+                    let cell = sheet.getCell(rowOffset, column.index)
+                    if (!cell.value) {
+                        errors.push(new ValidationErrorEmptyValue(sheetName, column.key))
+                    }
                 }
             }
             if (fields) {
                 for (let fCnt = 0; fCnt < fields.length; fCnt++) {
                     const field = fields[fCnt]
                     const cell = sheet.getCell(field.row, field.col)
-                    if (!cell.value) errors.push({
-                        msg: `invalid file: ${sheetName}.${field.key} is present but empty`,
-                        type: 'emptyValue',
-                        worksheet: sheetName,
-                        key: field.key
-                    })
+                    if (!cell.value) {
+                        errors.push(new ValidationErrorEmptyValue(sheetName, field.key))
+                    }
                 }
             }
             break

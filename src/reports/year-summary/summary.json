@@ -1,0 +1,2991 @@
+[
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BAZAAR21\\Bestellungen & Rechnungen\\WISAG",
+        "filename": "Abrechnungslayout BAZAAR2021 Wisag.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 10128.199999999999,
+            "nightlyCleaning40%": 36286.799999999996,
+            "nightlyCleaning": 4226,
+            "dailyCleaning40%": 45358.5,
+            "dailyCleaning": 0,
+            "postCleaning": 10128.199999999999
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2191.3,
+            "nightlyCleaning": 8765.2,
+            "dailyCleaning": 9190.6,
+            "postCleaning": 2191.3
+        },
+        "sanitary": {
+            "setupCleaning": 385.69000000000005,
+            "preCleaning": 271.28000000000003,
+            "nightlyCleaning": 1170.2,
+            "dismantling": 15.46,
+            "postCleaning": 295.66
+        },
+        "toiletService": {
+            "hours": 196
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BAZAAR21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Abrechnung BAZAAR2021-11-29dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 20.56,
+            "nightlyCleaning": 82.24,
+            "dailyCleaning": 102.8,
+            "postCleaning": 92.86
+        },
+        "sanitary": {
+            "setupCleaning": 484.10999999999996,
+            "preCleaning": 77.72,
+            "nightlyCleaning": 310.88,
+            "dismantling": 44.01,
+            "postCleaning": 77.72
+        },
+        "toiletService": {
+            "hours": 49
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BAZAAR21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout BAZAAR2021 Wisag.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 10128.199999999999,
+            "nightlyCleaning40%": 36286.799999999996,
+            "nightlyCleaning": 4226,
+            "dailyCleaning40%": 45358.5,
+            "dailyCleaning": 0,
+            "postCleaning": 10128.199999999999
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2191.3,
+            "nightlyCleaning": 8765.2,
+            "dailyCleaning": 9190.6,
+            "postCleaning": 2191.3
+        },
+        "sanitary": {
+            "setupCleaning": 385.69000000000005,
+            "preCleaning": 271.28000000000003,
+            "nightlyCleaning": 1170.2,
+            "dismantling": 15.46,
+            "postCleaning": 295.66
+        },
+        "toiletService": {
+            "hours": 196
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BOOT21\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL_Abrechnung_Boot21_2021_11_22.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 37441.15,
+            "nightlyCleaning40%": 128170.12,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 73882.3,
+            "dailyCleaning": 0,
+            "postCleaning": 37441.15
+        },
+        "traffics": {
+            "setupCleaning": 9778.61,
+            "preCleaning": 34442.53999999999,
+            "nightlyCleaning": 16345.904999999999,
+            "dailyCleaning": 10135.960000000001,
+            "postCleaning": 867092.7318390001
+        },
+        "sanitary": {
+            "setupCleaning": 1598.51,
+            "preCleaning": 361.08000000000004,
+            "nightlyCleaning": 963.5999999999999,
+            "dismantling": 237.67,
+            "postCleaning": 556.51
+        },
+        "toiletService": {
+            "hours": 120
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BOOT21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout BOOT2021 (Wisag).xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 14897.47,
+            "nightlyCleaning40%": 59589.88,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 37243.675,
+            "dailyCleaning": 0,
+            "postCleaning": 24395.08
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2545.88,
+            "nightlyCleaning": 9575.62,
+            "dailyCleaning": 6060.75,
+            "postCleaning": 2607.04
+        },
+        "sanitary": {
+            "setupCleaning": 1298.58,
+            "preCleaning": 335.39,
+            "nightlyCleaning": 1202.81,
+            "dismantling": 198.37,
+            "postCleaning": 335.39
+        },
+        "toiletService": {
+            "hours": 152
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 19.25
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\Callcenter H25\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout Callcenter H25 Mai 2021.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 3950.25,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 238.48,
+            "dismantling": 0,
+            "postCleaning": 0
+        },
+        "toiletService": {
+            "hours": 330
+        },
+        "outdoor": {
+            "area": 2
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\Callcenter H25\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout Callcenter H26 Juli 2021.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 1847.91,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 556.72,
+            "dismantling": 0,
+            "postCleaning": 0
+        },
+        "toiletService": {
+            "hours": 363
+        },
+        "outdoor": {
+            "area": 4
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\COVID-Teststation KST",
+        "filename": "SASSE Abrechnung COVID-Teststation KST April 2021-05-03dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 10029.83,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 0
+        },
+        "toiletService": {
+            "hours": 0
+        },
+        "outdoor": {
+            "area": 4.5
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\FUNK21 (EURONICS)\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Angebot Reinigungsleistungen FUNK21 (EURONICS).xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 2431.935,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 2431.935,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 2431.935,
+            "postCleaning": 2431.935
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2158.8,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 2158.8,
+            "postCleaning": 2158.8
+        },
+        "sanitary": {
+            "setupCleaning": 210.25,
+            "preCleaning": 193.7,
+            "nightlyCleaning": 193.7,
+            "dismantling": 0,
+            "postCleaning": 193.7
+        },
+        "toiletService": {
+            "hours": 7.5
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\FUNK21 (EURONICS)\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "WISAG Abrechnungslayout FUNK21 (EURONICS) AUSSTELLER.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 2808.5,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 2808.5,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 2808.5,
+            "postCleaning": 2808.5
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 164.7,
+            "preCleaning": 164.7,
+            "nightlyCleaning": 164.7,
+            "dismantling": 0,
+            "postCleaning": 164.7
+        },
+        "toiletService": {
+            "hours": 7.5
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\FUNK21 (EURONICS)\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "WISAG Abrechnungslayout FUNK21 (EURONICS) PROJEKT.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 2808.5,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 2808.5,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 2808.5,
+            "postCleaning": 2808.5
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2158.8,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 2158.8,
+            "postCleaning": 2158.8
+        },
+        "sanitary": {
+            "setupCleaning": 210.25,
+            "preCleaning": 193.7,
+            "nightlyCleaning": 193.7,
+            "dismantling": 0,
+            "postCleaning": 193.7
+        },
+        "toiletService": {
+            "hours": 7.5
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\IGW21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Abrechnungslayout GFFA IGW21.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 1947,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 7788,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 1947
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 1258.66,
+            "nightlyCleaning": 5034.64,
+            "dailyCleaning": 6293.3,
+            "postCleaning": 1321.735
+        },
+        "sanitary": {
+            "setupCleaning": 732.8,
+            "preCleaning": 135.74,
+            "nightlyCleaning": 542.96,
+            "dismantling": 94.92,
+            "postCleaning": 135.74
+        },
+        "toiletService": {
+            "hours": 132
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\IGW21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Abrechnungslayout IGW21digital H7_1a.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 2254,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 4508,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 1218
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 3178.7199999999993,
+            "nightlyCleaning": 6357.439999999999,
+            "dailyCleaning": 9536.16,
+            "postCleaning": 3178.7199999999993
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 83.25,
+            "nightlyCleaning": 166.5,
+            "dismantling": 0,
+            "postCleaning": 83.25
+        },
+        "toiletService": {
+            "hours": 54
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\IGW21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Abrechnungslayout Zukunftsforum.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 2558,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 2558
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 3276.33,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 3339.4049999999997
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 203.54,
+            "nightlyCleaning": 475.03000000000003,
+            "dismantling": 0,
+            "postCleaning": 203.54
+        },
+        "toiletService": {
+            "hours": 200
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 9
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\INNO Arbeitskreis 2021-10-28\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout INNO Arbeitskreis (WISAG).xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 133.58,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 88.72,
+            "preCleaning": 44.36,
+            "nightlyCleaning": 0,
+            "dismantling": 44.36,
+            "postCleaning": 44.36
+        },
+        "toiletService": {
+            "hours": 0
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\ITB21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "ITB21 Abrechnungslayout Sasse.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 5232,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 19887,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 4732
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 10152.18,
+            "nightlyCleaning": 43319.81,
+            "dailyCleaning": 34846.74999999999,
+            "postCleaning": 10152.18
+        },
+        "sanitary": {
+            "setupCleaning": 122.46000000000001,
+            "preCleaning": 460.01,
+            "nightlyCleaning": 1900.8100000000002,
+            "dismantling": 0,
+            "postCleaning": 460.01
+        },
+        "toiletService": {
+            "hours": 393
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\KOOP21",
+        "filename": "SASSE Abrechnungslayout KOOP21.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 52.21
+        },
+        "toiletService": {
+            "hours": 6
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\SCCON21\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL_Abrechnung_SCCON21_2021_11_22_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 1140.0700000000002,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 2280.1400000000003,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 1140.0700000000002
+        },
+        "traffics": {
+            "setupCleaning": 3123.01,
+            "preCleaning": 1747.1999999999998,
+            "nightlyCleaning": 2278.1,
+            "dailyCleaning": 1747.1999999999998,
+            "postCleaning": 211397.282415
+        },
+        "sanitary": {
+            "setupCleaning": 568.94,
+            "preCleaning": 80.5,
+            "nightlyCleaning": 161,
+            "dismantling": 80.5,
+            "postCleaning": 135.98
+        },
+        "toiletService": {
+            "hours": 18
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\TXL-Dinner 2021\\SASSE",
+        "filename": "SASSE AbrechnungTXL-Dinner 2021-08-04 CD.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 0
+        },
+        "toiletService": {
+            "hours": 138
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 456\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "WISAG Abrechnungslayout FILM 456.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 2808.5,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 2808.5,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 2808.5
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 1805.62,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 171.7,
+            "postCleaning": 1805.62
+        },
+        "sanitary": {
+            "setupCleaning": 93.28,
+            "preCleaning": 93.28,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 93.28
+        },
+        "toiletService": {
+            "hours": 26
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 462\\Kalkulation\\Abrechnung\\NL",
+        "filename": "Abrechnung_NL_FILM462_2021_08_30_dp.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 120.18,
+            "dismantling": 240.36,
+            "postCleaning": 120.18
+        },
+        "toiletService": {
+            "hours": 32
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 462\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL_Abrechnung_FILM462_2021_08_05_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 230.18,
+            "nightlyCleaning": 440,
+            "dismantling": 0,
+            "postCleaning": 230.18
+        },
+        "toiletService": {
+            "hours": 17.5
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 462\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL_korr._Abrechnung_FILM462_August_Zusatz_2021_09_29_dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 120.18,
+            "dismantling": 240.36,
+            "postCleaning": 120.18
+        },
+        "toiletService": {
+            "hours": 32
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 462\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL_korr._Abrechnung_FILM462_Juli_inkl_Covid_2021_09_29_dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 230.18,
+            "nightlyCleaning": 440,
+            "dismantling": 0,
+            "postCleaning": 230.18
+        },
+        "toiletService": {
+            "hours": 17.5
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 465\\Kalkulation\\Abrechnung\\NL",
+        "filename": "FILM465 NewLine Abrechnungslayout.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 114.93,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 114.93
+        },
+        "toiletService": {
+            "hours": 0
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 467\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "FILM467 SASSE Abrechnungslayout.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 67.95,
+            "nightlyCleaning": 135.9,
+            "dismantling": 0,
+            "postCleaning": 67.95
+        },
+        "toiletService": {
+            "hours": 0
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 472",
+        "filename": "NL_Abrechnung_Film472_2021_11_22_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 120.18,
+            "preCleaning": 120.18,
+            "nightlyCleaning": 0,
+            "dismantling": 120.18,
+            "postCleaning": 120.18
+        },
+        "toiletService": {
+            "hours": 12
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\CDU21\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL Abrechnung CDU2021-01-26dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 6061.24,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 56731.64,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 4404.24
+        },
+        "traffics": {
+            "setupCleaning": 230.6,
+            "preCleaning": 2997.7999999999997,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 230.6,
+            "postCleaning": 4785.872399999999
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 114.93,
+            "nightlyCleaning": 1379.16,
+            "dismantling": 0,
+            "postCleaning": 114.93
+        },
+        "toiletService": {
+            "hours": 161
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\CDU21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout CDU21 WISAG.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 9460.78
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 3124.2300000000005,
+            "nightlyCleaning": 2897.51,
+            "dailyCleaning": 5795.02,
+            "postCleaning": 3124.2300000000005
+        },
+        "sanitary": {
+            "setupCleaning": 601.26,
+            "preCleaning": 372.77000000000004,
+            "nightlyCleaning": 3511.16,
+            "dismantling": 0,
+            "postCleaning": 372.77000000000004
+        },
+        "toiletService": {
+            "hours": 325
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 770.23
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGHO21\\Kalkulation\\Abrechnung\\SASSE\\Archiv",
+        "filename": "DGHO21 (SASSE) abzgl VR Abrechnung Reinigungsleistungen 2021-10-14dgDF.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 11051.6,
+            "nightlyCleaning40%": 12031.2,
+            "nightlyCleaning": 15108,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 11051.6
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 7513.770000000001,
+            "nightlyCleaning": 19753.469999999998,
+            "dailyCleaning": 2421.56,
+            "postCleaning": 7537.550000000001
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 492.37,
+            "nightlyCleaning": 1384.54,
+            "dismantling": 0,
+            "postCleaning": 492.37
+        },
+        "toiletService": {
+            "hours": 455
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 164
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGHO21\\Kalkulation\\Abrechnung\\SASSE\\Archiv",
+        "filename": "KORREKTUR DGHO21 (SASSE) abzgl VR Planung Reinigungsleistungen 2021-10-18dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 9027.6,
+            "nightlyCleaning40%": 12031.2,
+            "nightlyCleaning": 15108,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 11051.6
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 7513.770000000001,
+            "nightlyCleaning": 19753.469999999998,
+            "dailyCleaning": 2421.56,
+            "postCleaning": 7537.550000000001
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 492.37,
+            "nightlyCleaning": 1384.54,
+            "dismantling": 0,
+            "postCleaning": 492.37
+        },
+        "toiletService": {
+            "hours": 455
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 164
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGHO21\\Kalkulation\\Abrechnung\\SASSE\\Archiv",
+        "filename": "KORREKTUR DGHO21 (SASSE) abzgl VR Planung Reinigungsleistungen 2021-11-01.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 9027.6,
+            "nightlyCleaning40%": 12031.2,
+            "nightlyCleaning": 15108,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 11051.6
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 7513.770000000001,
+            "nightlyCleaning": 19753.469999999998,
+            "dailyCleaning": 2421.56,
+            "postCleaning": 7537.550000000001
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 492.37,
+            "nightlyCleaning": 1384.54,
+            "dismantling": 0,
+            "postCleaning": 492.37
+        },
+        "toiletService": {
+            "hours": 455
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 160
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGHO21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "KORREKTUR DGHO21 (SASSE) abzgl VR Planung Reinigungsleistungen 2021-11-01.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 9027.6,
+            "nightlyCleaning40%": 12031.2,
+            "nightlyCleaning": 15108,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 11051.6
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 7513.770000000001,
+            "nightlyCleaning": 19753.469999999998,
+            "dailyCleaning": 2421.56,
+            "postCleaning": 7537.550000000001
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 492.37,
+            "nightlyCleaning": 1384.54,
+            "dismantling": 0,
+            "postCleaning": 492.37
+        },
+        "toiletService": {
+            "hours": 455
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 160
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGKJ21\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL_Abrechnung_DGKJ_2021_10_20_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 230.6,
+            "preCleaning": 461.2,
+            "nightlyCleaning": 691.8,
+            "dailyCleaning": 230.6,
+            "postCleaning": 4785.872399999999
+        },
+        "sanitary": {
+            "setupCleaning": 114.93,
+            "preCleaning": 114.93,
+            "nightlyCleaning": 229.86,
+            "dismantling": 0,
+            "postCleaning": 114.93
+        },
+        "toiletService": {
+            "hours": 42
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGKJ21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout DGKJ21 (WISAG).xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 9181,
+            "nightlyCleaning40%": 10096,
+            "nightlyCleaning": 8266,
+            "dailyCleaning40%": 15144,
+            "dailyCleaning": 0,
+            "postCleaning": 9371
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 3287.0100000000007,
+            "nightlyCleaning": 5863.56,
+            "dailyCleaning": 8795.340000000002,
+            "postCleaning": 2931.78
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 432.39,
+            "nightlyCleaning": 1040.27,
+            "dismantling": 0,
+            "postCleaning": 432.39
+        },
+        "toiletService": {
+            "hours": 152
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGN21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Abrechnungslayout DGN21.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 3068.9599999999996,
+            "nightlyCleaning": 9206.880000000001,
+            "dailyCleaning": 0,
+            "postCleaning": 3068.9599999999996
+        },
+        "sanitary": {
+            "setupCleaning": 570.56,
+            "preCleaning": 142.64,
+            "nightlyCleaning": 427.92,
+            "dismantling": 142.64,
+            "postCleaning": 142.64
+        },
+        "toiletService": {
+            "hours": 79
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 30.5
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGPPN21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Abrechnung DGPPN2021-12-06dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 16629.309999999998,
+            "nightlyCleaning40%": 12925.800000000001,
+            "nightlyCleaning": 36962.13,
+            "dailyCleaning40%": 17234.4,
+            "dailyCleaning": 0,
+            "postCleaning": 16723.33
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 14545.379999999997,
+            "nightlyCleaning": 43636.13999999999,
+            "dailyCleaning": 50311.27999999999,
+            "postCleaning": 14757.379999999997
+        },
+        "sanitary": {
+            "setupCleaning": 524.35,
+            "preCleaning": 679.2300000000001,
+            "nightlyCleaning": 2037.6899999999998,
+            "dismantling": 60.77,
+            "postCleaning": 679.2300000000001
+        },
+        "toiletService": {
+            "hours": 422.75
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGPPN21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Abrechnung DKOU2021.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 6050,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 18150,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 6350
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 6806.04,
+            "nightlyCleaning": 20418.120000000003,
+            "dailyCleaning": 22478.959999999995,
+            "postCleaning": 6806.04
+        },
+        "sanitary": {
+            "setupCleaning": 313.26,
+            "preCleaning": 155.82,
+            "nightlyCleaning": 467.46,
+            "dismantling": 104.42,
+            "postCleaning": 155.82
+        },
+        "toiletService": {
+            "hours": 96
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGPPN21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Korrektur Abrechnung DGPPN2021-12-14dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 16629.309999999998,
+            "nightlyCleaning40%": 12925.800000000001,
+            "nightlyCleaning": 36962.13,
+            "dailyCleaning40%": 17234.4,
+            "dailyCleaning": 0,
+            "postCleaning": 16723.33
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 14545.379999999997,
+            "nightlyCleaning": 43636.13999999999,
+            "dailyCleaning": 50311.27999999999,
+            "postCleaning": 14757.379999999997
+        },
+        "sanitary": {
+            "setupCleaning": 524.35,
+            "preCleaning": 679.2300000000001,
+            "nightlyCleaning": 2037.6899999999998,
+            "dismantling": 60.77,
+            "postCleaning": 679.2300000000001
+        },
+        "toiletService": {
+            "hours": 422.75
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DKOU21\\Kalkulation\\Abrechnung\\NL",
+        "filename": "KORREKTUR NL_Abrechnung_DKOU21_2022_11_22_dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 14899.33,
+            "nightlyCleaning40%": 36345.99,
+            "nightlyCleaning": 8352,
+            "dailyCleaning40%": 48461.32,
+            "dailyCleaning": 0,
+            "postCleaning": 14899.33
+        },
+        "traffics": {
+            "setupCleaning": 11080.500000000002,
+            "preCleaning": 33241.5,
+            "nightlyCleaning": 34649.04000000001,
+            "dailyCleaning": 11080.500000000002,
+            "postCleaning": 843280.7483339999
+        },
+        "sanitary": {
+            "setupCleaning": 2867.73,
+            "preCleaning": 710.23,
+            "nightlyCleaning": 2130.69,
+            "dismantling": 182.19,
+            "postCleaning": 789.37
+        },
+        "toiletService": {
+            "hours": 236
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DKOU21\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL_Abrechnung_DKOU21_2022_11_22_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 14899.33,
+            "nightlyCleaning40%": 36345.99,
+            "nightlyCleaning": 8352,
+            "dailyCleaning40%": 48461.32,
+            "dailyCleaning": 0,
+            "postCleaning": 14899.33
+        },
+        "traffics": {
+            "setupCleaning": 11080.500000000002,
+            "preCleaning": 33241.5,
+            "nightlyCleaning": 34649.04000000001,
+            "dailyCleaning": 11080.500000000002,
+            "postCleaning": 843280.7483339999
+        },
+        "sanitary": {
+            "setupCleaning": 2867.73,
+            "preCleaning": 710.23,
+            "nightlyCleaning": 2130.69,
+            "dismantling": 182.19,
+            "postCleaning": 789.37
+        },
+        "toiletService": {
+            "hours": 246
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DKOU21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Abrechnung DKOU2021.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 6050,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 18150,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 6350
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 6806.04,
+            "nightlyCleaning": 20418.120000000003,
+            "dailyCleaning": 22478.959999999995,
+            "postCleaning": 6806.04
+        },
+        "sanitary": {
+            "setupCleaning": 313.26,
+            "preCleaning": 155.82,
+            "nightlyCleaning": 467.46,
+            "dismantling": 104.42,
+            "postCleaning": 155.82
+        },
+        "toiletService": {
+            "hours": 96
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DPFLEGE21C\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE akt. Planung PFLEGE2021-10-18dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 10522.6,
+            "nightlyCleaning40%": 6015.6,
+            "nightlyCleaning": 4507,
+            "dailyCleaning40%": 6015.6,
+            "dailyCleaning": 0,
+            "postCleaning": 10522.6
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 6874.04,
+            "nightlyCleaning": 6874.04,
+            "dailyCleaning": 13253.36,
+            "postCleaning": 6874.04
+        },
+        "sanitary": {
+            "setupCleaning": 379.24,
+            "preCleaning": 451.55,
+            "nightlyCleaning": 451.55,
+            "dismantling": 189.62,
+            "postCleaning": 451.55
+        },
+        "toiletService": {
+            "hours": 130.5
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\ERA-EDTA21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "ERA-EDTA21 Abrechnungslayout WISAG.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 1979.09,
+            "nightlyCleaning": 5937.27,
+            "dailyCleaning": 7916.36,
+            "postCleaning": 1979.09
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 88.67,
+            "nightlyCleaning": 266.01,
+            "dismantling": 0,
+            "postCleaning": 88.67
+        },
+        "toiletService": {
+            "hours": 97
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\EUROECHO21B\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout EUROECHO21 SiteVisit.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 441.55,
+            "nightlyCleaning": 441.55,
+            "dailyCleaning": 0,
+            "postCleaning": 441.55
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 252.79000000000002,
+            "nightlyCleaning": 44.31,
+            "dismantling": 0,
+            "postCleaning": 44.31
+        },
+        "toiletService": {
+            "hours": 0
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\SPD21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SPD21B SASSE Abrechnungslayout.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 6015.6
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 9830.359999999997,
+            "nightlyCleaning": 10094.559999999998,
+            "dailyCleaning": 38049.119999999995,
+            "postCleaning": 4607.76
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 276.03000000000003,
+            "nightlyCleaning": 1484.0700000000002,
+            "dismantling": 0,
+            "postCleaning": 276.03000000000003
+        },
+        "toiletService": {
+            "hours": 151
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 154
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\SPD21 (Bundesparteitag)\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SPD21 (Sasse) Abrechnung geprüft 2021-12-22rw.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 6015.6,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 6015.6,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 6015.6
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 4711.469999999999,
+            "nightlyCleaning": 5316.860000000001,
+            "dailyCleaning": 0,
+            "postCleaning": 4711.469999999999
+        },
+        "sanitary": {
+            "setupCleaning": 827.54,
+            "preCleaning": 276.03000000000003,
+            "nightlyCleaning": 0,
+            "dismantling": 128.72,
+            "postCleaning": 276.03000000000003
+        },
+        "toiletService": {
+            "hours": 74
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 82.5
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\TBB21\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL_Abrechnung_TBB_2021_11_08_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 4692.780000000001,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 4692.780000000001,
+            "postCleaning": 597136.8714300002
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 120.18,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 120.18
+        },
+        "toiletService": {
+            "hours": 14
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\TBB21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout TBB21 WISAG.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 12307.845,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 12307.845,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 24615.69,
+            "postCleaning": 12781.845
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2619.8300000000004,
+            "nightlyCleaning": 2393.11,
+            "dailyCleaning": 4786.22,
+            "postCleaning": 2393.11
+        },
+        "sanitary": {
+            "setupCleaning": 292.17,
+            "preCleaning": 380.83,
+            "nightlyCleaning": 380.83,
+            "dismantling": 168.24,
+            "postCleaning": 380.83
+        },
+        "toiletService": {
+            "hours": 120
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\VW HV21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "VWHV21 Abrechnungslayout Sasse.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 4485,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 17796,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 8976.6
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 5259.719999999999,
+            "nightlyCleaning": 6046.759999999998,
+            "dailyCleaning": 0,
+            "postCleaning": 5252.599999999999
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 265.87,
+            "nightlyCleaning": 388.33000000000004,
+            "dismantling": 0,
+            "postCleaning": 265.87
+        },
+        "toiletService": {
+            "hours": 48
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "additionalService": {
+            "hours": 69
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\VW HV21\\Kalkulation\\Abrechnung\\WISAG-GLAS",
+        "filename": "VW HV2021 Glasreinigung Abrechnung.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\ZDH21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout ZDH21 WISAG.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 3559,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 317,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 4457
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 3243.54,
+            "nightlyCleaning": 2669.69,
+            "dailyCleaning": 0,
+            "postCleaning": 2669.69
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 117.10000000000001,
+            "nightlyCleaning": 262.16,
+            "dismantling": 0,
+            "postCleaning": 65.54
+        },
+        "additionalService": {
+            "hours": 20
+        },
+        "toiletService": {
+            "hours": 26
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BCB21\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL Abrechnung Waste-Service BCB21.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 0
+        },
+        "additionalService": {
+            "hours": 0
+        },
+        "toiletService": {
+            "hours": 0
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BCB21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout BCB21 WISAG.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 10747.25,
+            "nightlyCleaning40%": 15533.4,
+            "nightlyCleaning": 4320.1,
+            "dailyCleaning40%": 29024.100000000002,
+            "dailyCleaning": 0,
+            "postCleaning": 10747.25
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2091.3,
+            "nightlyCleaning": 4182.6,
+            "dailyCleaning": 6573.9,
+            "postCleaning": 2091.3
+        },
+        "sanitary": {
+            "setupCleaning": 302.56,
+            "preCleaning": 316.93,
+            "nightlyCleaning": 633.86,
+            "dismantling": 151.28,
+            "postCleaning": 316.93
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 134
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BFVVT 21",
+        "filename": "Abrechnungslayout BFVVT 21.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 1545,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 1545
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 1838.12,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 1838.12
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 93.28,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 93.28
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 15
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BTF21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "WISAG Abrechnungslayout BTF21.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 1752,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 2585
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 1838.12,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 1838.12
+        },
+        "sanitary": {
+            "setupCleaning": 93.28,
+            "preCleaning": 93.28,
+            "nightlyCleaning": 186.56,
+            "dismantling": 0,
+            "postCleaning": 93.28
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 42
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\DTFILM21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout DTFILM21 WISAG.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 10747.25,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 10747.25
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2158.8,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 2158.8
+        },
+        "sanitary": {
+            "setupCleaning": null,
+            "preCleaning": 316.93,
+            "nightlyCleaning": 0,
+            "dismantling": 293.32,
+            "postCleaning": 316.93
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 56
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\DTFILM21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "WISAG Abrechnungslayout DTFILM21-10-20dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 10747.25,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 10747.25
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2158.8,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 2158.8
+        },
+        "sanitary": {
+            "setupCleaning": null,
+            "preCleaning": 316.93,
+            "nightlyCleaning": 0,
+            "dismantling": 293.32,
+            "postCleaning": 316.93
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 56
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\EINSTIEG21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Abrechnung EINSTIEG2021-11-29dg.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 4648.48,
+            "nightlyCleaning40%": 4648.48,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 9296.96,
+            "dailyCleaning": 0,
+            "postCleaning": 4648.48
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2538.4400000000005,
+            "nightlyCleaning": 2298.9600000000005,
+            "dailyCleaning": 3955.26,
+            "postCleaning": 2538.4400000000005
+        },
+        "sanitary": {
+            "setupCleaning": 79.83,
+            "preCleaning": 143.49,
+            "nightlyCleaning": 79.83,
+            "dismantling": 0,
+            "postCleaning": 143.49
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 24
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\Hertha 77",
+        "filename": "SASSE Abrechnungslayout Hertha 77.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 83.25,
+            "nightlyCleaning": 83.25,
+            "dismantling": 0,
+            "postCleaning": 83.25
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 16
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\HYROX21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout HYROX21 (Wisag).xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 9460.78,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 9460.78,
+            "postCleaning": 9460.78
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 1462.69,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 1462.69,
+            "postCleaning": 1462.69
+        },
+        "sanitary": {
+            "setupCleaning": 64.31,
+            "preCleaning": 208.48000000000002,
+            "nightlyCleaning": 0,
+            "dismantling": 64.31,
+            "postCleaning": 208.48000000000002
+        },
+        "additionalService": {
+            "hours": 16
+        },
+        "toiletService": {
+            "hours": 27
+        },
+        "outdoor": {
+            "area": 0.75
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\IHK 21-1 GVM\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Abrechnung IHK 21-1 GVM COVID-19-SONDER.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 1217.01
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 52.21,
+            "nightlyCleaning": 52.21,
+            "dismantling": 0,
+            "postCleaning": 52.21
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 19.5
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\IHK 21-1 GVM\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "SASSE Abrechnungslayout IHK 21-1 GVM.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 1217.01
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 52.21,
+            "nightlyCleaning": 52.21,
+            "dismantling": 0,
+            "postCleaning": 52.21
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 19.5
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\JOBMEDI21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout JOBMEDI21 WISAG.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 2808.5,
+            "nightlyCleaning40%": 1545,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 4353.5,
+            "dailyCleaning": 0,
+            "postCleaning": 2808.5
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 1838.12,
+            "nightlyCleaning": 1838.12,
+            "dailyCleaning": 3676.24,
+            "postCleaning": 1838.12
+        },
+        "sanitary": {
+            "setupCleaning": 210.94,
+            "preCleaning": 164.7,
+            "nightlyCleaning": 164.7,
+            "dismantling": 93.28,
+            "postCleaning": 164.7
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 16
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\MEX 21",
+        "filename": "Abrechnungslayout MEX21 (WISAG).xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 3993.28,
+            "nightlyCleaning40%": 7986.56,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 11979.84,
+            "dailyCleaning": 0,
+            "postCleaning": 3993.28
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 1895.51,
+            "nightlyCleaning": 3791.02,
+            "dailyCleaning": 5686.53,
+            "postCleaning": 1895.51
+        },
+        "sanitary": {
+            "setupCleaning": 42.34,
+            "preCleaning": 127.85,
+            "nightlyCleaning": 255.7,
+            "dismantling": 0,
+            "postCleaning": 127.85
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 53
+        },
+        "outdoor": {
+            "area": 1.5
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\MINERA21",
+        "filename": "Abrechnungslayout MINERA21 (Wisag).xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 3821.23,
+            "nightlyCleaning40%": 7642.46,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 11463.69,
+            "dailyCleaning": 0,
+            "postCleaning": 3821.23
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2191.3,
+            "nightlyCleaning": 4382.6,
+            "dailyCleaning": 6573.9,
+            "postCleaning": 2191.3
+        },
+        "sanitary": {
+            "setupCleaning": 186.56,
+            "preCleaning": 192.13,
+            "nightlyCleaning": 186.56,
+            "dismantling": 0,
+            "postCleaning": 192.13
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 32
+        },
+        "outdoor": {
+            "area": 1.25
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\MINERA21",
+        "filename": "MINERA21 (Sasse) Abrechnungslayout korrekt 2021-11-27rw.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 850.27
+        },
+        "sanitary": {
+            "setupCleaning": 146.24,
+            "preCleaning": 73.12,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 0
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 3
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\PFHF 21",
+        "filename": "Abrechnung PFHF 21 2021-11-18 DF.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 126.23,
+            "nightlyCleaning": 883.61,
+            "dismantling": 0,
+            "postCleaning": 126.23
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "toiletService": {
+            "hours": 84
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\PURE&CRAFTED21\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL_Abrechnung_Pure21_2021_09_23_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 1596.4,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dismantling": 319.28,
+            "postCleaning": 159.64
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\PURE&CRAFTED21\\Kalkulation\\Abrechnung\\WISAG\\Archiv",
+        "filename": "Abrechnungslayout PURE21 (Wisag).xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 10575.199999999999,
+            "nightlyCleaning40%": 2808.5,
+            "nightlyCleaning": 7766.7,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 10575.199999999999
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 2191.3,
+            "nightlyCleaning": 2191.3,
+            "dailyCleaning": 0,
+            "postCleaning": 2191.3
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 263.55,
+            "nightlyCleaning": 263.55,
+            "dismantling": 0,
+            "postCleaning": 276.99
+        },
+        "additionalService": {
+            "hours": 65
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 73
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\PURE21 Filmdreh\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout PURE21 Filmdreh.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 93.28,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 93.28
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 5
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\REIT21\\Kalkulation\\Abrechnung\\NL",
+        "filename": "NL_Abrechnung_REIT_2021_08_05_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 80.5,
+            "nightlyCleaning": 563.5,
+            "dismantling": 0,
+            "postCleaning": 80.5
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\REIT21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "REIT21 SASSE Abrechnungslayout (korrigiert).xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 3099.9700000000003,
+            "nightlyCleaning": 11809.890000000001,
+            "dailyCleaning": 12931.179999999998,
+            "postCleaning": 3128.69
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 77.72,
+            "nightlyCleaning": 301.68,
+            "dismantling": 0,
+            "postCleaning": 77.72
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 126.5
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\REIT21\\Kalkulation\\Abrechnung\\SASSE",
+        "filename": "REIT21 SASSE Abrechnungslayout.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 3099.9700000000003,
+            "nightlyCleaning": 11809.890000000001,
+            "dailyCleaning": 12931.179999999998,
+            "postCleaning": 3128.69
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 77.72,
+            "nightlyCleaning": 301.68,
+            "dismantling": 0,
+            "postCleaning": 77.72
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 130.5
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\REIT21\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout REIT21 WISAG.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 9460.78
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 58.730000000000004,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 58.730000000000004
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 64.31,
+            "nightlyCleaning": 900.34,
+            "dismantling": 0,
+            "postCleaning": 64.31
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": null
+        },
+        "toiletService": {
+            "hours": 68.5
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\STEX21\\Kalkulation\\Abrechnung\\NL",
+        "filename": "Kopie von NL_Abrechnung_STEX21E_2021_03_29_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 6057.72,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 1564.1499999999999,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 50469.869925
+        },
+        "sanitary": {
+            "setupCleaning": 291.15999999999997,
+            "preCleaning": 291.15999999999997,
+            "nightlyCleaning": 1746.9599999999998,
+            "dismantling": 0,
+            "postCleaning": 291.15999999999997
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 178.5
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\STEX21A",
+        "filename": "NL_Abrechnung_STEX21A_2021_06_30_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 6057.72,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 291.15999999999997,
+            "preCleaning": 291.15999999999997,
+            "nightlyCleaning": 2038.12,
+            "dismantling": 291.15999999999997,
+            "postCleaning": 291.15999999999997
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": null
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\STEX21G",
+        "filename": "NL_STEX21G_Abrechnungslayout_2021_10_09_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 85.19,
+            "preCleaning": 85.19,
+            "nightlyCleaning": 511.14,
+            "dismantling": 0,
+            "postCleaning": 85.19
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 59.5
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\STEX21H",
+        "filename": "NL_Abrechnung_STEX21H_2021_05_04_ds.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 12116.560000000001,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 1925.12,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 2362.57,
+            "postCleaning": 102680.18256599999
+        },
+        "sanitary": {
+            "setupCleaning": 401.15999999999997,
+            "preCleaning": 401.15999999999997,
+            "nightlyCleaning": 2808.12,
+            "dismantling": 401.15999999999997,
+            "postCleaning": 401.15999999999997
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 198
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Interne VAs\\INTER766\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout Inter766.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 122.99,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 122.99
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 4
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Interne VAs\\INTER767\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout INTER767 (Wisag).xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 130.95999999999998,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 130.95999999999998
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Interne VAs\\INTER780\\Kalkulation\\Abrechnung\\WISAG",
+        "filename": "Abrechnungslayout INTER 780.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 93.28,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 93.28
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 9
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Interne VAs\\INTER789",
+        "filename": "WISAG Abrechnungslayout INTER789.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 250
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 122.99
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 0
+        }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Interne VAs\\Vorstandstreffen MB im MSH am 15.03.2020",
+        "filename": "Sasse Abrechnungslayout MSH am 15.03.21.xlsx",
+        "halls": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning40%": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning40%": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "traffics": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dailyCleaning": 0,
+            "postCleaning": 0
+        },
+        "sanitary": {
+            "setupCleaning": 0,
+            "preCleaning": 0,
+            "nightlyCleaning": 0,
+            "dismantling": 0,
+            "postCleaning": 0
+        },
+        "additionalService": {
+            "hours": null
+        },
+        "outdoor": {
+            "area": 0
+        },
+        "toiletService": {
+            "hours": 0
+        }
+    }
+]

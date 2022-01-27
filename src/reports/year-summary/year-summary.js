@@ -1,15 +1,13 @@
 const fs = require('fs')
 const path = require('path')
-const ExcelJS = require('exceljs')
 const { listAsync } = require('../../list.js')
 const { render } = require('../../render.js')
 const { parse } = require('../../parse.js')
 const { validate } = require('../../analyze.js')
+const { matchers } = require('../../analyze.js')
 const term = require('terminal-kit').terminal
 const billConfig = require('./billConfig')
 const wasteConfig = require('./wasteConfig')
-
-const { matchers } = require('../../analyze.js')
 
 function normalize(x, { min = 0, max = 1 } = {}) {
     return (x - min) / (max - min)
@@ -142,21 +140,39 @@ module.exports = async function yearSummary(settings) {
     const data = []
     for (let fCnt = 0; fCnt < files.length; fCnt++) {
         const filename = files[fCnt]
+        // test file
         const errors = await validate(filename, billConfig)
         const offsets = errors.filter(function (error) {
-            return error.type === 'wrongOffset'
+            return error.type === 'incorrectRowOffset'
+        })
+        const noSheets = errors.filter(function (error) {
+            return error.type === 'sheetMissing'
         })
         const invalidSheetNames = errors.filter(function (error) {
-            return error.type === 'inconsistentNaming'
+            return error.type === 'inconsistentSheetName'
         })
-        // change config
+        // adapt config to file
+        const saved = []
+        if (noSheets.length) {
+            for (let nCnt = 0; nCnt < noSheets.length; nCnt++) {
+                const noSheet = noSheets[nCnt]
+                for (const key in billConfig) {
+                    const config = billConfig[key]
+                    if (config.worksheet === noSheet.worksheet) {
+                        saved.push({ key, config })
+                        delete billConfig[key]
+                        break
+                    }
+                }
+            }
+        }
         if (invalidSheetNames.length) {
             for (let iCnt = 0; iCnt < invalidSheetNames.length; iCnt++) {
                 const invalid = invalidSheetNames[iCnt]
                 const config = Object.values(billConfig).find(function (conf) {
-                    return conf.worksheet === invalid.worksheet
+                    return conf.worksheet === invalid.validName
                 })
-                config.worksheet = invalid.name
+                config.worksheet = invalid.worksheet
             }
         }
         if (offsets.length) {
@@ -165,22 +181,16 @@ module.exports = async function yearSummary(settings) {
                 const config = Object.values(billConfig).find(function (conf) {
                     return conf.worksheet === offset.worksheet
                 })
-                config.rowOffset = offset.row
+                config.rowOffset = offset.valid
             }
         }
-
+        // import data
         let fileData
-        try {
-            if (!matchers.alba.test(filename) && !matchers.glass.test(filename)) {
-                fileData = await parse(filename, { config: billConfig })
-                data.push(fileData)
-            } else {
-                data.push({})
-            }
-        } catch (error) {
-            console.log({ filename })
-            console.error(error)
-            return
+        if (!matchers.alba.test(filename) && !matchers.glass.test(filename)) {
+            fileData = await parse(filename, { config: billConfig })
+            data.push(fileData)
+        } else {
+            data.push({})
         }
         // reset config
         if (offsets.length) {
@@ -189,16 +199,22 @@ module.exports = async function yearSummary(settings) {
                 const config = Object.values(billConfig).find(function (conf) {
                     return conf.worksheet === offset.worksheet
                 })
-                config.rowOffset = offset.rowOffset
+                config.rowOffset = offset.valid
             }
         }
         if (invalidSheetNames.length) {
             for (let iCnt = 0; iCnt < invalidSheetNames.length; iCnt++) {
                 const invalid = invalidSheetNames[iCnt]
                 const config = Object.values(billConfig).find(function (conf) {
-                    return conf.worksheet === invalid.name
+                    return conf.worksheet === invalid.worksheet
                 })
-                config.worksheet = invalid.worksheet
+                config.worksheet = invalid.validName
+            }
+        }
+        if (saved.length) {
+            for (let sCnt = 0; sCnt < saved.length; sCnt++) {
+                const save = saved[sCnt]
+                billConfig[save.key] = save.config
             }
         }
         bar.update(normalize(fCnt, { min: 0, max: files.length - 1 }))
@@ -208,19 +224,17 @@ module.exports = async function yearSummary(settings) {
     for (let dCnt = 0; dCnt < data.length; dCnt++) {
         const fileData = data[dCnt]
         const filename = files[dCnt]
-        if (!matchers.alba.test(filename)) {
-            const fileSummary = {
-                path: path.dirname(filename),
-                filename: path.basename(filename)
-            }
-            for (const key in fileData) {
-                const sheetData = fileData[key]
-                if (key in summaries) {
-                    fileSummary[key] = summaries[key](sheetData)
-                }
-            }
-            summary.push(fileSummary)
+        const fileSummary = {
+            path: path.dirname(filename),
+            filename: path.basename(filename)
         }
+        for (const key in fileData) {
+            const sheetData = fileData[key]
+            if (key in summaries) {
+                fileSummary[key] = summaries[key](sheetData)
+            }
+        }
+        summary.push(fileSummary)
     }
 
     const reportsFolder = settings['reports-folder']
