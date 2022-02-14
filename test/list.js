@@ -1,25 +1,33 @@
-const utils = require('util')
-const { list, listAsync } = require('../src/list.js')
-const term = require('terminal-kit').terminal
+const assert = require('assert')
+const path = require('path')
+const { list } = require('../src/list.js')
 
 describe('list', function () {
-    this.timeout(15000)
-    it('should list files async', async function () {
-        const start1 = 'C:\\Users\\tiedemann\\Development\\mbes32-events\\testData'
-        const start2 = 'G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\REIT21'
-        const start3 = '/kiro/home'
-        try {
-            await term.spinner()
-            const files = await listAsync(start2, {
-                matchers: [],
-                recurse: true,
-                dirs: false
-            })
-            term('\n')
-            console.log({ files })
-        } catch (error) {
-            console.error(error)
-        }
-        term.processExit(0)
+    it('should list files', async function () {
+        const start = path.resolve('./testData')
+        const files = await list(start, {
+            matchers: [],
+            recurse: true,
+            dirs: false
+        })
+        assert.equal(files.length, 3)
+    })
+    it('should list one file', async function () {
+        const start = path.resolve('./testData')
+        const files = await list(start, {
+            matchers: [/\.js$/i],
+            recurse: true,
+            dirs: false
+        })
+        assert.equal(files.length, 1)
+    })
+    it('should list dirs', async function () {
+        const start = path.resolve('./testData')
+        const dirs = await list(start, {
+            matchers: [],
+            recurse: false,
+            dirs: true
+        })
+        assert.equal(dirs.length, 2)
     })
 })

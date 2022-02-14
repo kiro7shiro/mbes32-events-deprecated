@@ -129,6 +129,7 @@ const validateFields = ajv.getSchema('fields')
 const validateConfig = ajv.getSchema('config')
 const validateMultiConfig = ajv.getSchema('multiConfig')
 
+// validation errors
 class ValidationError extends Error {
     constructor(type, message) {
         super(message)
@@ -284,6 +285,10 @@ async function validate(filename, config) {
     }
 
     return errors
+
+}
+
+function getContractor(filename) {
 
 }
 
