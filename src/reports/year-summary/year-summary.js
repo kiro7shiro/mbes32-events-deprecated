@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const { listAsync } = require('../../list.js')
+const { list } = require('../../list.js')
 const { render } = require('../../render.js')
 const { parse } = require('../../parse.js')
 const { validate } = require('../../analyze.js')
@@ -120,14 +120,14 @@ const summaries = {
 module.exports = async function yearSummary(settings) {
 
     const start = settings['events-folder']
-    const years = (await listAsync(start, { matchers: [matchers.yearFolder], dirs: true, recurse: false })).map(year => path.basename(year))
+    const years = (await list(start, { matchers: [matchers.yearFolder], dirs: true, recurse: false })).map(year => path.basename(year))
     term('\nPlease select a year: ')
     const input = await term.singleColumnMenu(years).promise
     term(`\nYou've selected: `).green(input.selectedText)(' ...\n')
 
     term('listing files, please wait ...')
     let spinner = await term.spinner()
-    const files = await listAsync(`${start}${path.sep}${input.selectedText}`, { matchers: [matchers.bill, matchers.xlsx] })
+    const files = await list(`${start}${path.sep}${input.selectedText}`, { matchers: [matchers.bill, matchers.xlsx] })
     spinner.hidden = true
     term('\nfound ').green(files.length)(' files...\n')
 
@@ -187,7 +187,13 @@ module.exports = async function yearSummary(settings) {
         // import data
         let fileData
         if (!matchers.alba.test(filename) && !matchers.glass.test(filename)) {
-            fileData = await parse(filename, { config: billConfig })
+            try {
+                fileData = await parse(filename, { config: billConfig })    
+            } catch (error) {
+                console.error(error)
+                process.exit(1)
+            }
+            
             data.push(fileData)
         } else {
             data.push({})

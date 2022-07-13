@@ -1,3 +1,4 @@
+const fs = require('fs')
 const path = require('path')
 const Ajv = require("ajv")
 const ExcelJS = require('exceljs')
@@ -9,7 +10,7 @@ const xlsxMatcher = /\.xlsx$|\.xlsm$/i
 
 const yearFolderMatcher = new RegExp(`${sysSepMatcher.source}\\d{4}$`, 'i')
 const eventFolderMatcher = new RegExp(
-    `${yearFolderMatcher.source}${sysSepMatcher.source}(eigenveranstaltung|ge2 kongresse|ge3 gast|interne vas|filmdreharbeiten|palais)${sysSepMatcher.source}[^\\n]+`,
+    `${sysSepMatcher.source}(eigenveranstaltung|ge2 kongresse|ge3 gast|interne vas|filmdreharbeiten|palais)${sysSepMatcher.source}`,
     'ig')
 
 const albaMatcher = /alba/i
@@ -288,12 +289,26 @@ async function validate(filename, config) {
 
 }
 
+async function getFileInfos(filename) {
+    const stat = await fs.promises.stat(filename)
+    const matches = Object.keys(matchers).reduce(function (prev, curr) {
+        prev[curr] = matchers[curr].test ? matchers[curr].test(filename) : undefined
+        return prev
+    }, {})
+    
+    return Object.assign({}, stat, matches)
+    // contractor
+    // event
+    // stat
+}
+
 function getContractor(filename) {
 
 }
 
 module.exports = {
     validate,
+    getFileInfos,
     validateColumns,
     validateFields,
     validateConfig,

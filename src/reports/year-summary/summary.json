@@ -36,6 +36,10 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BAZAAR21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "ALBA Projektabrechnung  Bazaar 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BAZAAR21\\Kalkulation\\Abrechnung\\SASSE",
         "filename": "SASSE Abrechnung BAZAAR2021-11-29dg.xlsx",
         "halls": {
@@ -108,6 +112,10 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BOOT21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Boot 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BOOT21\\Kalkulation\\Abrechnung\\NL",
         "filename": "NL_Abrechnung_Boot21_2021_11_22.xlsx",
         "halls": {
@@ -178,6 +186,22 @@
         "additionalService": {
             "hours": 19.25
         }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BUS2BUS21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  Bus2Bus 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BUS2BUS21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Testcenter Bus2Bus 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\Callcenter H25\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  Callcenter Halle 25 Januar 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\Callcenter H25\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  Callcenter Halle 25 März 2021.xlsx"
     },
     {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\Callcenter H25\\Kalkulation\\Abrechnung\\WISAG",
@@ -396,6 +420,18 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\IGW21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  GFFA IGW 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\IGW21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  IGW digital H 7 1a  2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\IGW21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  IGW Testcenter  2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\IGW21\\Kalkulation\\Abrechnung\\SASSE",
         "filename": "SASSE Abrechnungslayout GFFA IGW21.xlsx",
         "halls": {
@@ -540,6 +576,14 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\ITB21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  ITB Now 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\ITB21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Testcenter ITB Now 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\ITB21\\Kalkulation\\Abrechnung\\SASSE",
         "filename": "ITB21 Abrechnungslayout Sasse.xlsx",
         "halls": {
@@ -612,6 +656,10 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\PARKBVGS21",
+        "filename": "ALBA Projektabrechnung  BVGPark März 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\SCCON21\\Kalkulation\\Abrechnung\\NL",
         "filename": "NL_Abrechnung_SCCON21_2021_11_22_ds.xlsx",
         "halls": {
@@ -646,6 +694,14 @@
         "additionalService": {
             "hours": null
         }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\TXL-Dinner 2021\\ALBA",
+        "filename": "ALBA Abfall Kostenabrechnung TXL-Dinner 2021-08-30dg.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\TXL-Dinner 2021\\ALBA",
+        "filename": "ALBA Kehrmaschine Kostenabrechnung TXL-Dinner 2021-08-30dg.xlsx"
     },
     {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\TXL-Dinner 2021\\SASSE",
@@ -684,6 +740,10 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 456\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Filmdreh 456 Palais März 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 456\\Kalkulation\\Abrechnung\\WISAG",
         "filename": "WISAG Abrechnungslayout FILM 456.xlsx",
         "halls": {
@@ -718,6 +778,14 @@
         "additionalService": {
             "hours": null
         }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 462\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "finale Projektabrechnung  Filmdreh 462   Juli August 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 462\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  Filmdreh 462 Zwischenstand 2021-08-19.xlsx"
     },
     {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Filmdreharbeiten\\FILM 462\\Kalkulation\\Abrechnung\\NL",
@@ -970,6 +1038,14 @@
         "additionalService": {
             "hours": null
         }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\CDU21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  CDU Parteitag 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\CDU21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung CDU Parteitag 2021 Testcenter Halle 1 2 (3).xlsx"
     },
     {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\CDU21\\Kalkulation\\Abrechnung\\NL",
@@ -1296,6 +1372,10 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGPPN21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung DGPPN 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DGPPN21\\Kalkulation\\Abrechnung\\SASSE",
         "filename": "SASSE Abrechnung DGPPN2021-12-06dg.xlsx",
         "halls": {
@@ -1402,6 +1482,10 @@
         "additionalService": {
             "hours": null
         }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DKOU21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "ALBA Projektabrechnung DKOU 2021.xlsx"
     },
     {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\DKOU21\\Kalkulation\\Abrechnung\\NL",
@@ -1548,6 +1632,10 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\ERA-EDTA21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "ERA-EDTA21 Projektabrechnung ALBA.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\ERA-EDTA21\\Kalkulation\\Abrechnung\\WISAG",
         "filename": "ERA-EDTA21 Abrechnungslayout WISAG.xlsx",
         "halls": {
@@ -1618,6 +1706,22 @@
         "additionalService": {
             "hours": null
         }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\HSK21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  Hauptstadtkongress Juni 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\SPD21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  SPD 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\SPD21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Testcenter SPD CCB 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\SPD21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Testcenter SPD H.7.2 2021.xlsx"
     },
     {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\SPD21\\Kalkulation\\Abrechnung\\SASSE",
@@ -1692,6 +1796,10 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\TBB21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Business Booster 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\TBB21\\Kalkulation\\Abrechnung\\NL",
         "filename": "NL_Abrechnung_TBB_2021_11_08_ds.xlsx",
         "halls": {
@@ -1764,6 +1872,14 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\VW HV21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  VW HV 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\VW HV21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Testcenter VW HV 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\VW HV21\\Kalkulation\\Abrechnung\\SASSE",
         "filename": "VWHV21 Abrechnungslayout Sasse.xlsx",
         "halls": {
@@ -1804,6 +1920,14 @@
         "filename": "VW HV2021 Glasreinigung Abrechnung.xlsx"
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\ZDH21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  ZDH 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\ZDH21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Testcenter ZDH 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE2 Kongresse\\ZDH21\\Kalkulation\\Abrechnung\\WISAG",
         "filename": "Abrechnungslayout ZDH21 WISAG.xlsx",
         "halls": {
@@ -1838,6 +1962,10 @@
         "outdoor": {
             "area": 0
         }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BCB21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Bar Convent 2021.xlsx"
     },
     {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BCB21\\Kalkulation\\Abrechnung\\NL",
@@ -1948,6 +2076,26 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BRIEF21A\\Bestellungen & Rechnungen\\ALBA",
+        "filename": "Freigabe Projektabrechnung  Briefwahl Charlottenburg-Wilmersdorf 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BRIEF21A\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  Briefwahl Charlottenburg-Wilmersdorf 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BRIEF21A\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  Briefwahl Steglitz-Zehlendorf 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BTF21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "ALBA Abrechnung BTF 2021 COVID-19-SONDER.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BTF21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung BTF 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\BTF21\\Kalkulation\\Abrechnung\\WISAG",
         "filename": "WISAG Abrechnungslayout BTF21.xlsx",
         "halls": {
@@ -2056,6 +2204,10 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\EINSTIEG21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  Einstieg Berlin 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\EINSTIEG21\\Kalkulation\\Abrechnung\\SASSE",
         "filename": "SASSE Abrechnung EINSTIEG2021-11-29dg.xlsx",
         "halls": {
@@ -2128,6 +2280,10 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\HYROX21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Hyrox 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\HYROX21\\Kalkulation\\Abrechnung\\WISAG",
         "filename": "Abrechnungslayout HYROX21 (Wisag).xlsx",
         "halls": {
@@ -2162,6 +2318,10 @@
         "outdoor": {
             "area": 0.75
         }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\IHK 21-1 GVM\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  IHK21 1 Januar 2021.xlsx"
     },
     {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\IHK 21-1 GVM\\Kalkulation\\Abrechnung\\SASSE",
@@ -2236,6 +2396,10 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\JOBMEDI21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  Jobmedi 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\JOBMEDI21\\Kalkulation\\Abrechnung\\WISAG",
         "filename": "Abrechnungslayout JOBMEDI21 WISAG.xlsx",
         "halls": {
@@ -2306,6 +2470,10 @@
         "outdoor": {
             "area": 1.5
         }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\MEX 21",
+        "filename": "ALBA Projektabrechnung MEX 2021.xlsx"
     },
     {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\MINERA21",
@@ -2416,6 +2584,14 @@
         }
     },
     {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\PFHF 21",
+        "filename": "ALBA Projektabrechnung Prüfung FH Finanzen 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\PURE&CRAFTED21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  Pure and Crafted 2021.xlsx"
+    },
+    {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\PURE&CRAFTED21\\Kalkulation\\Abrechnung\\NL",
         "filename": "NL_Abrechnung_Pure21_2021_09_23_ds.xlsx",
         "halls": {
@@ -2519,6 +2695,14 @@
         "toiletService": {
             "hours": 5
         }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\REIT21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung  Global Jumping 2021.xlsx"
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\REIT21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Testcenter Global Jumping 2021.xlsx"
     },
     {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\REIT21\\Kalkulation\\Abrechnung\\NL",
@@ -2663,6 +2847,10 @@
         "toiletService": {
             "hours": 68.5
         }
+    },
+    {
+        "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\STEX21\\Kalkulation\\Abrechnung\\ALBA",
+        "filename": "Projektabrechnung Staatsexamen März 2021.xlsx"
     },
     {
         "path": "G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\GE3 Gast\\STEX21\\Kalkulation\\Abrechnung\\NL",

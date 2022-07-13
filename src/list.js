@@ -1,6 +1,19 @@
 const fs = require('fs')
 const path = require('path')
 
+/**
+ * https://stackoverflow.com/questions/71737880/nodejs-filter-out-directories-async/71738685#71738685
+ * @param {*} arr 
+ * @param {*} predicate 
+ * @returns 
+ */
+const asyncFilter = async function (arr, predicate) {
+    const results = await Promise.all(arr.map(predicate))
+    return arr.filter(function (_v, index) {
+        return results[index]
+    })
+}
+
 class StartNotExistsError extends Error {
     constructor(start) {
         super(`File or Folder: '${start}' doesn't seem to exists. Please check your starting location and try again.`)
@@ -16,7 +29,7 @@ class StartNotExistsError extends Error {
 function list(start, { matchers = [], recurse = true, dirs = false } = {}) {
 
     /**
-     * Packs listAsync() calls into an array for recursion.
+     * Packs list() calls into an array for recursion.
      * @param {String} absolute path of items to pack
      * @returns {Promise[]}
      */
@@ -28,7 +41,7 @@ function list(start, { matchers = [], recurse = true, dirs = false } = {}) {
         }, [])
         return promises
     }
-    
+
     return new Promise(async function (resolve, reject) {
         const files = []
         const absolute = path.resolve(start)
@@ -38,27 +51,28 @@ function list(start, { matchers = [], recurse = true, dirs = false } = {}) {
             reject(new StartNotExistsError(start))
         }
         const stat = await fs.promises.stat(absolute)
+        const isDir = stat.isDirectory()
         switch (true) {
-            case stat.isDirectory() && recurse && !dirs:
+            case isDir && recurse && !dirs:
                 const promises = await packPromises(absolute)
                 const results = await Promise.all(promises)
                 files.push(...results.flat())
                 break
             default:
-                if (stat.isDirectory() && dirs) {
+                if (isDir && dirs) {
                     if (recurse) {
                         const promises = await packPromises(absolute)
                         const results = await Promise.all(promises)
                         files.push(...results.flat())
                     } else {
-                        const dir = (await fs.promises.readdir(absolute)).filter(async function (item) {
+                        const items = await fs.promises.readdir(absolute)
+                        const dir = (await asyncFilter(items, async function (item) {
                             const iStat = await fs.promises.stat(path.resolve(absolute, item))
-                            if (iStat.isDirectory()) return true
-                            return false
-                        }).map(i => path.resolve(absolute, i))
+                            return iStat.isDirectory()
+                        })).map(i => path.resolve(absolute, i))
                         files.push(...dir)
                     }
-                }else if (stat.isFile() && !dirs) {
+                } else if (stat.isFile() && !dirs) {
                     files.push(start)
                 }
                 break
@@ -66,15 +80,19 @@ function list(start, { matchers = [], recurse = true, dirs = false } = {}) {
         let result = files
         if (matchers.length) {
             result = []
-            matchers.forEach(function (matcher) {
-                temp = files.filter(function (item) {
-                    return matcher.test(item)
-                })
-                result.push(...temp)
+            temp = files.filter(function (item) {
+                let keep = true
+                for (let mCmt = 0; mCmt < matchers.length; mCmt++) {
+                    const matcher = matchers[mCmt]
+                    keep = keep && matcher.test(item)
+                }
+                return keep
             })
+            result.push(...temp)
+            
         }
         resolve(result)
     })
 }
 
-module.exports = { listSync, list }
+module.exports = { list }

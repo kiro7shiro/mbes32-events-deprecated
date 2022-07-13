@@ -14,6 +14,5 @@ module.exports = {
     cli: async function (args) {
         args[1] = __filename // workaround for subcommands
         program.parse(args)
-        
     }
 }

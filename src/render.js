@@ -1,5 +1,5 @@
-const FS = require('fs')
-const PATH = require('path')
+const fs = require('fs')
+const path = require('path')
 const { Renderer } = require('xlsx-renderer')
 
 /**
@@ -22,8 +22,8 @@ async function render(template, data) {
             break
 
         case typeof data === 'string' && /\.json\b/i.test(data):
-            const dataFile = PATH.resolve(data)
-            if (!FS.existsSync(dataFile))
+            const dataFile = path.resolve(data)
+            if (!fs.existsSync(dataFile))
                 throw new Error(`${dataFile} doesn't exists.`)
             loaded = require(dataFile)
             break
@@ -43,14 +43,14 @@ async function render(template, data) {
             break
 
         case typeof template === 'string':
-            const tempFile = PATH.resolve(template)
-            if (!FS.existsSync(tempFile))
+            const tempFile = path.resolve(template)
+            if (!fs.existsSync(tempFile))
                 throw new Error(`${tempFile} doesn't exists.`)
-            if (PATH.extname(tempFile) !== '.js' && PATH.extname(tempFile) !== '.xlsx') {
+            if (path.extname(tempFile) !== '.js' && path.extname(tempFile) !== '.xlsx') {
                 throw new Error(`cannot render template ${tempFile}`)
             }
             let renderer = undefined
-            if (PATH.extname(tempFile) === '.js') {
+            if (path.extname(tempFile) === '.js') {
                 renderer = require(tempFile)
                 result = render(renderer, loaded)
             } else {

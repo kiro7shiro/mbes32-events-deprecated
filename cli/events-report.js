@@ -16,7 +16,8 @@ program.parse()
 async function reporter() {
 
     const start = path.resolve(`${settings['reports-folder']}`)
-    const reportsList = list(start, { dirs: true, recurse: false })
+    const reportsList = await list(start, { dirs: true, recurse: false })
+    console.log({ reportsList })
     const reports = {}
     const menuItems = []
     for (let rCnt = 0; rCnt < reportsList.length; rCnt++) {
