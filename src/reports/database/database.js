@@ -1,9 +1,10 @@
 const fs = require('fs')
 const path = require('path')
-const { list } = require('../../../src/list.js')
-const { render } = require('../../../src/render.js')
-const { update } = require('../../../src/update.js')
-const term = require('terminal-kit').terminal
+const { list } = require('../../list.js')
+const { render } = require('../../render.js')
+const { update } = require('../../update.js')
+const { validate } = require('../../analyze.js')
+const terminal = require('terminal-kit').terminal
 
 const dataFilesMatcher = /tpk-daten[\s0-9\-]+\.xlsx\b/i
 
@@ -15,14 +16,14 @@ module.exports = async function tpkDatabase(settings) {
     const check = fs.existsSync(settings['events-database'])
     if (!check) {
 
-        term(`no database file found. would you like to create one?`)
-        const newDatabase = await term.singleColumnMenu(['yes', 'no']).promise
+        terminal(`no database file found. would you like to create one?`)
+        const newDatabase = await terminal.singleColumnMenu(['yes', 'no']).promise
 
         if (newDatabase.selectedText === 'no') return
 
-        term(`please enter a database filename:\n`)
-        const y = (await term.getCursorLocation())['y']
-        const inputFilename = await term.inputField({ y, x: 2 }).promise
+        terminal(`please enter a database filename:\n`)
+        const y = (await terminal.getCursorLocation())['y']
+        const inputFilename = await terminal.inputField({ y, x: 2 }).promise
         const filename = path.parse(path.resolve(settings['data-folder'], inputFilename))
         const templatePath = path.parse(path.resolve(__dirname, 'database-template.xlsx'))
 
@@ -31,13 +32,14 @@ module.exports = async function tpkDatabase(settings) {
 
         settings['events-database'] = path.format(filename)
 
-        term.green(`\ndatabase saved ...\n`)
+        terminal.green(`\ndatabase saved ...\n`)
 
     }
 
-    term(`please enter a data file(s) location:\n`)
-    const y = (await term.getCursorLocation())['y']
-    const inputDataFiles = await term.inputField({ y, x: 2 }).promise
+    // get dataFile(s) location
+    terminal(`please enter a data file(s) location:\n`)
+    const y = (await terminal.getCursorLocation())['y']
+    const inputDataFiles = await terminal.inputField({ y, x: 2 }).promise
     const dataFiles = path.parse(path.resolve(inputDataFiles))
     let dataStart = path.parse(path.format(dataFiles))
     let configMatcher = new RegExp(`${dataStart.name}-config.js`, 'i')
@@ -46,10 +48,10 @@ module.exports = async function tpkDatabase(settings) {
         configMatcher = new RegExp(`${dataFiles.name}-config.js`, 'i')
     }
     // search config
-    const configs = list(path.format(dataStart), { matchers: [configMatcher] })
+    const configs = await list(path.format(dataStart), { matchers: [configMatcher] })
     if (!configs.length) {
-        term.red(`\nno config found for: ${dataFiles.name}\n`)
-        term(`please save a config and try again.\n`)
+        terminal.red(`\nno config found for: ${dataFiles.name}\n`)
+        terminal(`please save a config and try again.\n`)
         return
     }
     // list files
@@ -57,10 +59,10 @@ module.exports = async function tpkDatabase(settings) {
     if(dataFiles.ext) {
         files = [path.format(dataFiles)]
     }else{
-        files = list(path.format(dataStart), { matchers: [dataFilesMatcher] })
+        files = await list(path.format(dataStart), { matchers: [dataFilesMatcher] })
     }
     if (!files.length) {
-        term.red(`\nno files found.\n`)
+        terminal.red(`\nno data files found.\n`)
         return
     }
 
@@ -71,9 +73,9 @@ module.exports = async function tpkDatabase(settings) {
     const updater = path.resolve(path.dirname(__filename), 'update-database.js')
     const exporter = path.resolve(path.dirname(__filename), 'database-template.xlsx')
 
-    term('\n')
-    await term.spinner()
-    term(` updating ${path.basename(settings['events-database'])} please wait ...\n`)
+    terminal('\n')
+    await terminal.spinner()
+    terminal(` updating ${path.basename(settings['events-database'])} please wait ...\n`)
 
     await update(
         settings['events-database'],
@@ -88,6 +90,6 @@ module.exports = async function tpkDatabase(settings) {
         }
     )
 
-    term.green(`done\n`)
+    terminal.green(`done\n`)
 
 }
