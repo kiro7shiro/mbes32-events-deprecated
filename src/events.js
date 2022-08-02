@@ -2,6 +2,19 @@ const path = require('path')
 const Fuse = require('fuse.js')
 const { getEventsData } = require('./database.js')
 
+async function getFileInfos(filename) {
+    const stat = await fs.promises.stat(filename)
+    const matches = Object.keys(matchers).reduce(function (prev, curr) {
+        prev[curr] = matchers[curr].test ? matchers[curr].test(filename) : undefined
+        return prev
+    }, {})
+
+    return Object.assign({}, stat, matches)
+    // contractor
+    // event
+    // stat
+}
+
 function isEventFolder(filename) {
     const eventFolder = /[\\\/]\d{4}[\\\/](eigenveranstaltung|ge2 kongresse|ge3 gast|interne vas|filmdreharbeiten|palais)[\\\/][a-z\s\d\-\(\)\.]+/i
     return eventFolder.test(filename)
