@@ -152,6 +152,7 @@ module.exports = async function yearSummary(settings) {
             return error.type === 'inconsistentSheetName'
         })
         // adapt config to file
+        // TODO : use adapt() function
         const saved = []
         if (noSheets.length) {
             for (let nCnt = 0; nCnt < noSheets.length; nCnt++) {
@@ -187,14 +188,11 @@ module.exports = async function yearSummary(settings) {
         // import data
         let fileData
         if (!matchers.alba.test(filename) && !matchers.glass.test(filename)) {
-            try {
-                fileData = await parse(filename, { config: billConfig })    
-            } catch (error) {
-                console.error(error)
-                process.exit(1)
-            }
-            
+            fileData = await parse(filename, { config: billConfig })
             data.push(fileData)
+        /* } else if (matchers.alba.test(filename)) {
+            fileData = await parse(filename, { config: wasteConfig })
+            data.push(fileData) */
         } else {
             data.push({})
         }
