@@ -1,33 +1,47 @@
 const assert = require('assert')
 const path = require('path')
-const { list } = require('../src/list.js')
+const { list, Errors } = require('../src/list.js')
 
-describe('list', function () {
-    it('should list all files', async function () {
-        const start = path.resolve(process.cwd(), './test/testData')
-        const files = await list(start, {
-            matchers: [],
-            recurse: true,
-            dirs: false
-        })
-        assert.equal(files.length, 6)
+const testData = path.resolve(__dirname, './testData')
+
+describe('list()', function () {
+
+    it(`start not exists`, async function () {
+        await assert.rejects(list(testData + '!'), Errors.StartNotExists)
     })
-    it('should list matched files (*.js, *.json, *.xlsx)', async function () {
-        const start = path.resolve(process.cwd(), './test/testData')
-        const files = await list(start, {
-            matchers: [/\.js$/i, /\.json$/i, /\.xlsx$/i],
-            recurse: true,
-            dirs: false
-        })
-        assert.equal(files.length, 6)
+
+    it('list all files', async function () {
+        const files = await list(testData)
+        assert.strictEqual(files.length, 8)
     })
+
+    it('list *.js file(s)', async function () {
+        const JsFiles = await list(testData, {
+            matchers: [/\.js\b/i]
+        })
+        assert.strictEqual(JsFiles.length, 2)
+    })
+
+    it('list *.json file(s)', async function () {
+        const JsonFiles = await list(testData, {
+            matchers: [/\.json\b/i]
+        })
+        assert.strictEqual(JsonFiles.length, 1)
+    })
+
+    it('list *.xlsx file(s)', async function () {
+        const xlsxFiles = await list(testData, {
+            matchers: [/\.xlsx\b/i]
+        })
+        assert.strictEqual(xlsxFiles.length, 4)
+    })
+
     it('should list dirs', async function () {
-        const start = path.resolve(process.cwd(), './test/testData')
-        const dirs = await list(start, {
-            matchers: [],
+        const dirs = await list(testData, {
             recurse: false,
             dirs: true
         })
-        assert.equal(dirs.length, 4)
+        assert.strictEqual(dirs.length, 4)
     })
+
 })

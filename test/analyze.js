@@ -1,11 +1,38 @@
 const assert = require('assert')
 const path = require('path')
-const { getFileInfos } = require('../src/analyze.js')
+const { adapt, validate, Errors } = require('../src/analyze.js')
+
+const testData = path.resolve(__dirname, './testData')
 
 describe('analyze', async function () {
-    it('should get file infos', async function () {
-        const file = 'G:\\ES3\\Abteilung\\ES32\\Reinigung\\Veranstaltungen\\2021\\Eigenveranstaltung\\BAZAAR21\\Kalkulation\\Planung\\WISAG\\WISAG akt. Planung BAZAAR2021-10-27dg.xlsx'
-        const infos = await getFileInfos(file)
-        console.log(infos)
+
+    it('config invalid', async function () {
+        const filename = path.resolve(testData, './Dir3/test3.xlsx')
+        await assert.rejects(validate(filename, {}), Errors.ConfigInvalid)
     })
+
+    it('test a valid file', async function () {
+        const filename = path.resolve(testData, './Dir3/test3.xlsx')
+        const config = require(path.resolve(testData, './Dir3/test3Config.js'))
+        const errors = await validate(filename, config)
+        //console.table(errors, ['name', 'worksheet', 'valid', 'key'])
+        assert(!errors.length)
+    })
+
+    it('test an invalid file', async function () {
+        const filename = path.resolve(testData, './Dir3/test5.xlsx')
+        const config = require(path.resolve(testData, './Dir3/test3Config.js'))
+        const errors = await validate(filename, config)
+        //console.table(errors, ['name', 'worksheet', 'valid', 'key'])
+        assert(errors.length >= 1)
+    })
+
+    it('adapt a config', async function () {
+        const filename = path.resolve(testData, './Dir3/test5.xlsx')
+        const config = require(path.resolve(testData, './Dir3/test3Config.js'))
+        const errors = await validate(filename, config)
+        const adaption = adapt(config, errors)
+        assert.strictEqual(adaption.worksheet, 'Tabelle2')
+    })
+
 })

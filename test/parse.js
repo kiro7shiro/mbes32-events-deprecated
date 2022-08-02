@@ -1,23 +1,39 @@
 const assert = require('assert')
 const path = require('path')
-const { parse } = require('../src/parse.js')
+const { parse, Errors } = require('../src/parse.js')
 
-describe('parse', function () {
-    it('should parse *.js file', async function () {
-        const start = path.resolve(process.cwd(), './test/testData/Dir1/test1.js')
-        const test = await parse(start)
+const testData = path.resolve(__dirname, './testData')
+
+describe('parse()', function () {
+
+    it('invalid config', async function () {
+        const filename = path.resolve(testData, './Dir3/test3.xlsx')
+        await assert.rejects(parse(filename, {}), Errors.ConfigInvalid)
+    })
+
+    it('unsupported file format', async function () {
+        const filename = path.resolve(testData, './Dir3/test3.txt')
+        await assert.rejects(parse(filename, {}), Errors.UnsupportedFileFormat)
+    })
+
+    it('parse *.js file', async function () {
+        const filename = path.resolve(testData, './Dir1/test1.js')
+        const test = await parse(filename)
         const result = test('test')
-        assert.equal(result, 'test')
+        assert.strictEqual(result, 'test')
     })
-    it('should parse *.json file', async function () {
-        const start = path.resolve(process.cwd(), './test/testData/Dir2/test2.json')
-        const { test2 } = await parse(start)
-        assert.equal(test2.length, 3)
+
+    it('parse *.json file', async function () {
+        const filename = path.resolve(testData, './Dir2/test2.json')
+        const { test } = await parse(filename)
+        assert.strictEqual(test.length, 3)
     })
-    it('should parse *.xlsx file', async function () {
-        const start = path.resolve(process.cwd(), './test/testData/Dir3/test3.xlsx')
-        const config = path.resolve(process.cwd(), './test/testData/Dir3/test3Config.js')
-        const test3 = await parse(start, { config })
-        assert.equal(test3.length, 1)
+
+    it('parse *.xlsx file', async function () {
+        const filename = path.resolve(testData, './Dir3/test3.xlsx')
+        const config = path.resolve(testData, './Dir3/test3Config.js')
+        const test = await parse(filename, { config })
+        assert.strictEqual(test.length, 1)
     })
+
 })
