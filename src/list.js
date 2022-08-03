@@ -14,19 +14,27 @@ const asyncFilter = async function (arr, predicate) {
     })
 }
 
-class StartNotExistsError extends Error {
+class StartNotExists extends Error {
     constructor(start) {
         super(`File or Folder: '${start}' doesn't seem to exists. Please check your starting location and try again.`)
         this.name = 'StartNotExists'
     }
 }
 
+class Errors {
+    static StartNotExists = StartNotExists
+}
+
 /**
  * List all items that the matchers have hit.
  * @param {String} start location from where to start the search
+ * @param {Object} options
+ * @param {Array} options.matchers array of regex to match with the names
+ * @param {Boolean} options.recurse search nested directories
+ * @param {Boolean} options.dirs return only directory names
  * @returns {String[]}
  */
-function list(start, { matchers = [], recurse = true, dirs = false } = {}) {
+async function list(start, { matchers = [], recurse = true, dirs = false } = {}) {
 
     /**
      * Packs list() calls into an array for recursion.
@@ -48,7 +56,7 @@ function list(start, { matchers = [], recurse = true, dirs = false } = {}) {
         try {
             await fs.promises.access(absolute, fs.constants.R_OK | fs.constants.W_OK)
         } catch (error) {
-            reject(new StartNotExistsError(start))
+            reject(new StartNotExists(start))
         }
         const stat = await fs.promises.stat(absolute)
         const isDir = stat.isDirectory()
@@ -95,4 +103,4 @@ function list(start, { matchers = [], recurse = true, dirs = false } = {}) {
     })
 }
 
-module.exports = { list }
+module.exports = { list, Errors }
