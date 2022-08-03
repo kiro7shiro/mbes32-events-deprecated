@@ -2,6 +2,42 @@ const fs = require('fs')
 const path = require('path')
 const { Renderer } = require('xlsx-renderer')
 
+class CannotRenderFile extends Error {
+    constructor(filename, message) {
+        super(message)
+        this.type = 'CannotRenderFile'
+        this.filename = filename
+    }
+}
+class DataFileNotExists extends CannotRenderFile {
+    constructor(filename) {
+        super(filename, `${path.basename(filename)} doesn't exists.`)
+    }
+}
+class CannotLoadData extends CannotRenderFile {
+    constructor(filename) {
+        super(filename, `cannot load ${path.basename(filename)}.`)
+    }
+}
+class TemplateNotExists extends CannotRenderFile {
+    constructor(filename) {
+        super(filename, `${path.basename(filename)} doesn't exists.`)
+    }
+}
+class TemplateInvalid extends CannotRenderFile {
+    constructor(filename) {
+        super(filename, `cannot render template ${path.basename(filename)}.`)
+    }
+}
+
+class Errors {
+    static CannotRenderFile = CannotRenderFile
+    static DataFileNotExists = DataFileNotExists
+    static CannotLoadData = CannotLoadData
+    static TemplateNotExists = TemplateNotExists
+    static TemplateInvalid = TemplateInvalid
+}
+
 /**
  * Render data into a human readable format or file.
  * @param {String|Function} template for rendering data into a string
@@ -24,7 +60,7 @@ async function render(template, data) {
         case typeof data === 'string' && /\.json\b/i.test(data):
             const dataFile = path.resolve(data)
             if (!fs.existsSync(dataFile))
-                throw new Error(`${dataFile} doesn't exists.`)
+                throw new DataFileNotExists(dataFile)
             loaded = require(dataFile)
             break
 
@@ -33,7 +69,8 @@ async function render(template, data) {
             break
 
         default:
-            throw new Error(`cannot load ${data}`)
+            const dataStr = JSON.stringify(data) || typeof data
+            throw new CannotLoadData(dataStr)
     }
 
     // render template
@@ -45,9 +82,9 @@ async function render(template, data) {
         case typeof template === 'string':
             const tempFile = path.resolve(template)
             if (!fs.existsSync(tempFile))
-                throw new Error(`${tempFile} doesn't exists.`)
+                throw new TemplateNotExists(tempFile)
             if (path.extname(tempFile) !== '.js' && path.extname(tempFile) !== '.xlsx') {
-                throw new Error(`cannot render template ${tempFile}`)
+                throw new TemplateInvalid(tempFile)
             }
             let renderer = undefined
             if (path.extname(tempFile) === '.js') {
@@ -60,7 +97,7 @@ async function render(template, data) {
             break
 
         default:
-            throw new Error(`cannot render template ${template}`)
+            throw new TemplateInvalid(template)
 
     }
 
@@ -68,4 +105,4 @@ async function render(template, data) {
 
 }
 
-module.exports = { render }
+module.exports = { render, Errors }
