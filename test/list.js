@@ -12,14 +12,14 @@ describe('list()', function () {
 
     it('list all files', async function () {
         const files = await list(testData)
-        assert.strictEqual(files.length, 8)
+        assert.strictEqual(files.length, 10)
     })
 
     it('list *.js file(s)', async function () {
         const JsFiles = await list(testData, {
             matchers: [/\.js\b/i]
         })
-        assert.strictEqual(JsFiles.length, 2)
+        assert.strictEqual(JsFiles.length, 3)
     })
 
     it('list *.json file(s)', async function () {
@@ -33,7 +33,7 @@ describe('list()', function () {
         const xlsxFiles = await list(testData, {
             matchers: [/\.xlsx\b/i]
         })
-        assert.strictEqual(xlsxFiles.length, 4)
+        assert.strictEqual(xlsxFiles.length, 5)
     })
 
     it('should list dirs', async function () {

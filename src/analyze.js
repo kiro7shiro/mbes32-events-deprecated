@@ -8,6 +8,7 @@ const sysSepMatcher = new RegExp(`\\${path.sep}`, 'i')
 const pdfMatcher = /\.pdf$/i
 const xlsxMatcher = /\.xlsx$|\.xlsm$/i
 
+// TODO : move es32 specific's to own module
 const yearFolderMatcher = new RegExp(`${sysSepMatcher.source}\\d{4}$`, 'i')
 const eventFolderMatcher = new RegExp(
     `${sysSepMatcher.source}(eigenveranstaltung|ge2 kongresse|ge3 gast|interne vas|filmdreharbeiten|palais)${sysSepMatcher.source}`,
@@ -130,49 +131,154 @@ const validateFields = ajv.getSchema('fields')
 const validateConfig = ajv.getSchema('config')
 const validateMultiConfig = ajv.getSchema('multiConfig')
 
+// TODO : file not exists error
 // validation errors
 class ValidationError extends Error {
-    constructor(type, message) {
+    constructor(filename, worksheet, message) {
         super(message)
-        this.type = type
-    }
-}
-
-class ValidationErrorInvalidConfig extends ValidationError {
-    constructor() {
-        super('invalidConfig', 'config is invalid')
-    }
-}
-
-class ValidationErrorSheetMissing extends ValidationError {
-    constructor(worksheet) {
-        super('sheetMissing', `${worksheet} is missing`)
+        this.name = 'ValidationError'
+        this.filename = filename
         this.worksheet = worksheet
     }
 }
 
-class ValidationErrorInconsistentSheetName extends ValidationError {
-    constructor(worksheet, config) {
-        super('inconsistentSheetName', `invalid file: ${config.worksheet} is present but named inconsistent.`)
-        this.worksheet = worksheet
-        this.validName = config.worksheet
+class ConfigInvalid extends ValidationError {
+    constructor(errors, { worksheet = '', filename = '' } = {}) {
+        super(filename, worksheet, 'Config is invalid.')
+        this.name = 'ConfigInvalid'
+        this.errors = errors
     }
 }
 
-class ValidationErrorIncorrectRowOffset extends ValidationError {
-    constructor(worksheet, valid) {
-        super('incorrectRowOffset', `invalid file: rowOffset seems to be: ${valid}.`)
-        this.worksheet = worksheet
+class SheetMissing extends ValidationError {
+    constructor(filename, worksheet) {
+        super(filename, worksheet, `Worksheet: ${worksheet} is missing.`)
+        this.name = 'SheetMissing'
+    }
+}
+
+class InconsistentSheetName extends ValidationError {
+    constructor(filename, worksheet, config) {
+        super(filename, worksheet, `Worksheet: ${config.worksheet} is present but named inconsistent.`)
+        this.name = 'InconsistentSheetName'
+        this.valid = config.worksheet
+    }
+}
+
+class IncorrectRowOffset extends ValidationError {
+    constructor(filename, worksheet, key, valid) {
+        super(filename, worksheet, `Worksheet: ${worksheet} rowOffset seems to be: ${valid}.`)
+        this.name = 'IncorrectRowOffset'
+        this.key = key
         this.valid = valid
     }
 }
 
-class ValidationErrorEmptyValue extends ValidationError {
-    constructor(worksheet, key) {
-        super('emptyValue', `invalid file: ${worksheet}.${key} is present but empty`)
-        this.worksheet = worksheet
+class IncorrectColumnIndex extends ValidationError {
+    constructor(filename, worksheet, key, valid) {
+        super(filename, worksheet, `Worksheet: ${worksheet} column index: ${key} seems to be: ${valid}.`)
+        this.name = 'IncorrectColumnIndex'
+        this.key = key
+        this.valid = valid
+    }
+}
+
+class MissingDataHeader extends ValidationError {
+    constructor(filename, worksheet, key, header) {
+        super(filename, worksheet, `Worksheet: ${worksheet} data header for: ${key} is missing.`)
+        this.name = 'MissingDataHeader'
+        this.key = key
+        this.header = header
+    }
+}
+
+class DataHeaderNotInConfig extends ValidationError {
+    constructor(filename, worksheet, header, index) {
+        super(filename, worksheet, `Worksheet: ${worksheet} data header: ${header} not in config.`)
+        this.name = 'DataHeaderNotInConfig'
+        this.header = header
+        this.index = index
+    }
+}
+
+class InvalidData extends ValidationError {
+    constructor(filename, worksheet, key) {
+        super(filename, worksheet, `Worksheet: ${worksheet} key: ${key} contains invalid data.`)
+        this.name = 'InvalidData'
         this.key = key
     }
+}
+
+class Errors {
+    static ValidationError = ValidationError
+    static ConfigInvalid = ConfigInvalid
+    static SheetMissing = SheetMissing
+    static InconsistentSheetName = InconsistentSheetName
+    static IncorrectRowOffset = IncorrectRowOffset
+    static IncorrectColumnIndex = IncorrectColumnIndex
+    static MissingDataHeader = MissingDataHeader
+    static DataHeaderNotInConfig = DataHeaderNotInConfig
+    static InvalidData = InvalidData
+}
+
+/**
+ * Adapt a configuration to an invalid configured file
+ * @param {Object} config to adapt to the file
+ * @param {Array} errors to change the configuration
+ * @returns {Object} a new object with the changed parameters
+ */
+function adapt(config, errors) {
+    const adaption = Object.assign({}, config)
+    // validate config and use the results as flags
+    const isColumns = validateColumns(config)
+    const isFields = validateFields(config)
+    const isConfig = validateConfig(config)
+    const isMultiConfig = validateMultiConfig(config)
+    switch (true) {
+        case !isColumns && !isFields && !isConfig && !isMultiConfig:
+            // configuration error
+            throw new ConfigInvalid([
+                ...validateColumns.errors,
+                ...validateFields.errors,
+                ...validateConfig.errors,
+                ...validateMultiConfig.errors
+            ])
+
+        case !isColumns && !isFields && !isConfig:
+            // adapt a multi config
+            for (const key in adaption) {
+                const subConfig = adaption[key]
+                const noSheet = errors.find(function (error) {
+                    return error.name === 'SheetMissing' && error.worksheet === subConfig.worksheet
+                })
+                if (noSheet) {
+                    delete adaption[key]
+                } else {
+                    adaption[key] = adapt(subConfig, errors)
+                }
+            }
+            break
+
+        case !isColumns && !isFields:
+            // adapt a single config
+            const invalidName = errors.find(function (error) {
+                return error.name === 'InconsistentSheetName' && error.valid === config.worksheet
+            })
+            if (invalidName) {
+                adaption.worksheet = invalidName.worksheet
+            }
+            const offset = errors.find(function (error) {
+                return error.name === 'IncorrectRowOffset' && error.worksheet === adaption.worksheet
+            })
+            if (offset) {
+                adaption.rowOffset = offset.valid
+            }
+            // TODO : strategy for adapting empty values? set to zero or null string
+            break
+    }
+
+    return adaption
+
 }
 
 /**
@@ -182,20 +288,23 @@ class ValidationErrorEmptyValue extends ValidationError {
  * @returns {[ValidationError]} errors
  */
 async function validate(filename, config) {
-
     // validate config and use the results as flags
-    const validColumns = validateColumns(config)
-    const validFields = validateFields(config)
-    const validConfig = validateConfig(config)
-    const validMultiConfig = validateMultiConfig(config)
-
+    const isColumns = validateColumns(config)
+    const isFields = validateFields(config)
+    const isConfig = validateConfig(config)
+    const isMultiConfig = validateMultiConfig(config)
     // test the file based on the config by trying to access the data
-    let errors = []
+    const errors = []
     switch (true) {
-        case !validColumns && !validFields && !validConfig && !validMultiConfig:
-            throw new ValidationErrorInvalidConfig()
+        case !isColumns && !isFields && !isConfig && !isMultiConfig:
+            throw new ConfigInvalid([
+                ...validateColumns.errors,
+                ...validateFields.errors,
+                ...validateConfig.errors,
+                ...validateMultiConfig.errors
+            ])
 
-        case !validColumns && !validFields && !validConfig:
+        case !isColumns && !isFields && !isConfig:
             // validate a multi config
             for (const key in config) {
                 const subConfig = config[key]
@@ -203,7 +312,7 @@ async function validate(filename, config) {
             }
             break
 
-        case !validColumns && !validFields:
+        case !isColumns && !isFields:
             // validate a single config
             // 1. read file
             const workbook = new ExcelJS.Workbook()
@@ -227,57 +336,97 @@ async function validate(filename, config) {
             })
             const sheets = fuse.search(config.worksheet)
             if (!sheets.length) {
-                errors.push(new ValidationErrorSheetMissing(config.worksheet))
+                errors.push(new SheetMissing(filename, config.worksheet))
                 break
             }
             const { item: sheetName, score } = sheets[0]
             if (score >= 0.001) {
-                errors.push(new ValidationErrorInconsistentSheetName(sheetName, config))
+                errors.push(new InconsistentSheetName(filename, sheetName, config))
             }
-            // 3. check if fields or columns are present by testing their values
+            // 3. check if fields or columns are present
             const sheet = workbook.getWorksheet(sheetName)
+            const cells = sheet.getRows(1, 1 + sheet.lastRow.number).reduce(function (prev, curr) {
+                prev.push(curr.values)
+                return prev
+            }, []).map(function (row) {
+                // remove undefined from first position
+                if (row[0] === undefined) row.shift()
+                // trim off whitespace
+                return row.map(cell => {
+                    if (cell && cell.trim) {
+                        return cell.trim()
+                    } else {
+                        return cell
+                    }
+                })
+            })
             const { columns, fields } = config
             if (columns) {
+                // testing columns
                 const { rowOffset } = config || 0
-                const headers = config.columns.reduce(function (prev, curr) {
-                    if (curr.header) prev.push(curr.header)
+                // get data headers if present
+                const headers = columns.reduce(function (prev, curr) {
+                    if (curr.header) prev.push({
+                        key: curr.key,
+                        index: curr.index,
+                        header: curr.header
+                    })
                     return prev
                 }, [])
                 if (headers.length) {
-                    const cells = sheet.getRows(1, 1 + sheet.lastRow.number).reduce(function (prev, curr) {
-                        prev.push(curr.values)
-                        return prev
-                    }, [])
-                    const offset = cells.findIndex(function (row) {
-                        // trim off whitespace
-                        row = row.map(cell => {
-                            if (cell && cell.trim) {
-                                return cell.trim()
-                            } else {
-                                return cell
+                    // compare headers with columns
+                    for (let hCnt = 0; hCnt < headers.length; hCnt++) {
+                        const header = headers[hCnt]
+                        const compare = { index: header.index, rowOffset: rowOffset }
+                        let found = false
+                        for (let cCnt = 0; cCnt < cells.length; cCnt++) {
+                            const row = cells[cCnt]
+                            const index = row.indexOf(header.header)
+                            if (index > -1) {
+                                compare.index = index + 1
+                                compare.rowOffset = cCnt + 1
+                                found = true
+                                break
                             }
-                        })
-                        const [head] = headers
-                        return row.indexOf(head) > -1
-                    })
-                    if (offset + 1 !== rowOffset) {
-                        errors.push(new ValidationErrorIncorrectRowOffset(sheetName, offset + 1))
+                        }
+                        if (!found) {
+                            errors.push(new MissingDataHeader(filename, sheetName, header.key, header.header))
+                            // move on to the next header 
+                            continue
+                        }
+                        if (compare.rowOffset !== rowOffset) {
+                            errors.push(new IncorrectRowOffset(filename, sheetName, header.key, compare.rowOffset))
+                        }
+                        if (compare.index !== header.index) {
+                            errors.push(new IncorrectColumnIndex(filename, sheetName, header.key, compare.index))
+                        }
                     }
-                }
-                for (let cCnt = 0; cCnt < columns.length; cCnt++) {
-                    const column = columns[cCnt]
-                    let cell = sheet.getCell(rowOffset, column.index)
-                    if (!cell.value) {
-                        errors.push(new ValidationErrorEmptyValue(sheetName, column.key))
+                    // search for additional data headers not present in the config
+                    const incorrectRowOffset = errors.find(function (error) {
+                        return error.name === 'IncorrectRowOffset'
+                    })
+                    const headerRowIndex = incorrectRowOffset ? incorrectRowOffset.valid : rowOffset
+                    const headerRow = cells[headerRowIndex - 1]
+                    for (let hCnt = 0; hCnt < headerRow.length; hCnt++) {
+                        const dataHeader = headerRow[hCnt]
+                        if (dataHeader) {
+                            const confHeader = headers.find(function (header) {
+                                return header.header === dataHeader
+                            })
+                            if (!confHeader) {
+                                errors.push(new DataHeaderNotInConfig(filename, sheetName, dataHeader, hCnt))
+                            }
+                        }
                     }
                 }
             }
             if (fields) {
+                // testing fields
                 for (let fCnt = 0; fCnt < fields.length; fCnt++) {
                     const field = fields[fCnt]
-                    const cell = sheet.getCell(field.row, field.col)
-                    if (!cell.value) {
-                        errors.push(new ValidationErrorEmptyValue(sheetName, field.key))
+                    const cell = cells[field.row - 1][field.col - 1]
+                    if (!cell) {
+                        errors.push(new InvalidData(filename, sheetName, field.key))
                     }
                 }
             }
@@ -289,26 +438,10 @@ async function validate(filename, config) {
 
 }
 
-async function getFileInfos(filename) {
-    const stat = await fs.promises.stat(filename)
-    const matches = Object.keys(matchers).reduce(function (prev, curr) {
-        prev[curr] = matchers[curr].test ? matchers[curr].test(filename) : undefined
-        return prev
-    }, {})
-    
-    return Object.assign({}, stat, matches)
-    // contractor
-    // event
-    // stat
-}
-
-function getContractor(filename) {
-
-}
-
 module.exports = {
+    adapt,
     validate,
-    getFileInfos,
+    Errors,
     validateColumns,
     validateFields,
     validateConfig,
