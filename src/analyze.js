@@ -161,25 +161,27 @@ class InconsistentSheetName extends ValidationError {
     constructor(filename, worksheet, config) {
         super(filename, worksheet, `Worksheet: ${config.worksheet} is present but named inconsistent.`)
         this.name = 'InconsistentSheetName'
+        this.key = 'worksheet'
+        this.actual = worksheet
         this.valid = config.worksheet
     }
 }
 
 class IncorrectRowOffset extends ValidationError {
-    constructor(filename, worksheet, key, valid) {
-        super(filename, worksheet, `Worksheet: ${worksheet} rowOffset seems to be: ${valid}.`)
+    constructor(filename, worksheet, key, actual) {
+        super(filename, worksheet, `Worksheet: ${worksheet} rowOffset seems to be: ${actual}.`)
         this.name = 'IncorrectRowOffset'
         this.key = key
-        this.valid = valid
+        this.actual = actual
     }
 }
 
 class IncorrectColumnIndex extends ValidationError {
-    constructor(filename, worksheet, key, valid) {
-        super(filename, worksheet, `Worksheet: ${worksheet} column index: ${key} seems to be: ${valid}.`)
+    constructor(filename, worksheet, key, actual) {
+        super(filename, worksheet, `Worksheet: ${worksheet} column index: ${key} seems to be: ${actual}.`)
         this.name = 'IncorrectColumnIndex'
         this.key = key
-        this.valid = valid
+        this.actual = actual
     }
 }
 
@@ -374,14 +376,26 @@ async function validate(filename, config) {
                     return prev
                 }, [])
                 if (headers.length) {
-                    // compare headers with columns
+                    // compare headers with data
                     for (let hCnt = 0; hCnt < headers.length; hCnt++) {
                         const header = headers[hCnt]
                         const compare = { index: header.index, rowOffset: rowOffset }
                         let found = false
+                        // test each data row
                         for (let cCnt = 0; cCnt < cells.length; cCnt++) {
                             const row = cells[cCnt]
-                            const index = row.indexOf(header.header)
+                            // search the dataHeader in the data row
+                            // decrease the firstHeaderIndex if needed
+                            // to test for left or right movement of the headers
+                            let index = -1
+                            let firstHeaderIndex = headers[0].index || 1
+                            while (index < 0 && firstHeaderIndex >= 1) {
+                                index = row.indexOf(header.header, firstHeaderIndex - 1)
+                                firstHeaderIndex--
+                            }
+                            // if the dataHeader was found 
+                            // save the index and rowOffset for comparison 
+                            // and early break the row loop
                             if (index > -1) {
                                 compare.index = index + 1
                                 compare.rowOffset = cCnt + 1
@@ -405,7 +419,7 @@ async function validate(filename, config) {
                     const incorrectRowOffset = errors.find(function (error) {
                         return error.name === 'IncorrectRowOffset'
                     })
-                    const headerRowIndex = incorrectRowOffset ? incorrectRowOffset.valid : rowOffset
+                    const headerRowIndex = incorrectRowOffset ? incorrectRowOffset.actual : rowOffset
                     const headerRow = cells[headerRowIndex - 1]
                     for (let hCnt = 0; hCnt < headerRow.length; hCnt++) {
                         const dataHeader = headerRow[hCnt]
