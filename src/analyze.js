@@ -419,6 +419,7 @@ async function validate(filename, config) {
                         }
                     }
                 }
+                // TODO : validate list data
             }
             if (fields) {
                 // testing fields

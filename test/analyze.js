@@ -7,95 +7,75 @@ const testData = path.resolve(__dirname, './testData')
 describe('analyze', async function () {
 
     it('config invalid', async function () {
-        const filename = path.resolve(testData, './Dir3/test3.xlsx')
+        const filename = path.resolve(testData, './analyze/test5.xlsx')
         await assert.rejects(validate(filename, {}), Errors.ConfigInvalid)
     })
 
     it('sheet missing', async function () {
-        const filename = path.resolve(testData, './Dir3/test3.xlsx')
-        const config = Object.assign({}, require(path.resolve(testData, './Dir3/test3Config.js'))) 
+        const filename = path.resolve(testData, './analyze/test5.xlsx')
+        const config = Object.assign({}, require(path.resolve(testData, './analyze/test5Config.js')))
         config.worksheet = 'missing'
         const errors = await validate(filename, config)
         //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'valid'])
-        assert(errors[0] instanceof Errors.SheetMissing)
+        assert.throws(() => { throw errors[0] }, Errors.SheetMissing)
     })
 
     it('inconsistent sheet name', async function () {
-        const filename = path.resolve(testData, './Dir3/test3.xlsx')
-        const config = Object.assign({}, require(path.resolve(testData, './Dir3/test3Config.js'))) 
-        config.worksheet = 'Tabelle2'
+        const filename = path.resolve(testData, './analyze/test5.xlsx')
+        const config = Object.assign({}, require(path.resolve(testData, './analyze/test5Config.js')))
+        config.worksheet = 'Tabelle1'
         const errors = await validate(filename, config)
         //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'valid'])
-        assert(errors[0] instanceof Errors.InconsistentSheetName)
+        assert.throws(() => { throw errors[0] }, Errors.InconsistentSheetName)
     })
 
     it('incorrect row offset', async function () {
-        const filename = path.resolve(testData, './Dir3/test5.xlsx')
-        const config = Object.assign({}, require(path.resolve(testData, './Dir3/test5Config.js'))) 
+        const filename = path.resolve(testData, './analyze/test5.xlsx')
+        const config = Object.assign({}, require(path.resolve(testData, './analyze/test5Config.js')))
         config.rowOffset = 0
         const errors = await validate(filename, config)
         //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'valid'])
-        assert(errors[0] instanceof Errors.IncorrectRowOffset)
+        assert.throws(() => { throw errors[0] }, Errors.IncorrectRowOffset)
     })
 
     it('incorrect column index', async function () {
-        const filename = path.resolve(testData, './Dir3/test5.xlsx')
-        const config = Object.assign({}, require(path.resolve(testData, './Dir3/test5Config.js'))) 
+        const filename = path.resolve(testData, './analyze/test5.xlsx')
+        const config = Object.assign({}, require(path.resolve(testData, './analyze/test5Config.js')))
         config.columns[0].index = 0
         const errors = await validate(filename, config)
         //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'valid'])
-        assert(errors[0] instanceof Errors.IncorrectColumnIndex)
+        assert.throws(() => { throw errors[0] }, Errors.IncorrectColumnIndex)
     })
 
     it('missing data header', async function () {
-        const filename = path.resolve(testData, './Dir3/test5.xlsx')
-        const config = Object.assign({}, require(path.resolve(testData, './Dir3/test5Config.js'))) 
+        const filename = path.resolve(testData, './analyze/test5.xlsx')
+        const config = Object.assign({}, require(path.resolve(testData, './analyze/test5Config.js')))
         config.columns[0].header = 'missing'
         const errors = await validate(filename, config)
         //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'valid'])
-        assert(errors[0] instanceof Errors.MissingDataHeader)
-
+        assert.throws(() => { throw errors[0] }, Errors.MissingDataHeader)
     })
 
     it('data header not in config', async function () {
-        const filename = path.resolve(testData, './Dir3/test5.xlsx')
-        const config = Object.assign({}, require(path.resolve(testData, './Dir3/test5Config.js'))) 
+        const filename = path.resolve(testData, './analyze/test5.xlsx')
+        const config = Object.assign({}, require(path.resolve(testData, './analyze/test5Config.js')))
         config.columns[0].header = 'missing'
         const errors = await validate(filename, config)
         //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'valid'])
-        assert(errors[1] instanceof Errors.DataHeaderNotInConfig)
+        //assert(errors[1] instanceof Errors.DataHeaderNotInConfig)
+        assert.throws(() => { throw errors[1] }, Errors.DataHeaderNotInConfig)
     })
 
     it('invalid data', async function () {
-        const filename = path.resolve(testData, './Dir3/test6.xlsx')
-        const config = Object.assign({}, require(path.resolve(testData, './Dir3/test3Config.js'))) 
+        const filename = path.resolve(testData, './analyze/test6.xlsx')
+        const config = Object.assign({}, require(path.resolve(testData, './analyze/test6Config.js')))
         const errors = await validate(filename, config)
         //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'valid'])
-        assert(errors[0] instanceof Errors.InvalidData)
+        assert.throws(() => { throw errors[0] }, Errors.InvalidData)
     })
 
-    it('test a valid file', async function () {
-        const filename = path.resolve(testData, './Dir3/test3.xlsx')
-        const config = require(path.resolve(testData, './Dir3/test3Config.js'))
-        const errors = await validate(filename, config)
-        //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'valid'])
-        assert(!errors.length)
-    })
-
-    it('test an invalid file', async function () {
-        const filename = path.resolve(testData, './Dir3/test5.xlsx')
-        const config = require(path.resolve(testData, './Dir3/test3Config.js'))
-        const errors = await validate(filename, config)
-        //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'valid'])
-        assert(errors.length >= 1)
-    })
-
-    it('adapt a config', async function () {
-        const filename = path.resolve(testData, './Dir3/test5.xlsx')
-        const config = require(path.resolve(testData, './Dir3/test3Config.js'))
-        const errors = await validate(filename, config)
-        const adaption = adapt(config, errors)
-        assert.strictEqual(adaption.worksheet, 'Tabelle2')
-    })
+    it('test a valid file')
+    it('test an invalid file')
+    it('adapt a config')
 
 })

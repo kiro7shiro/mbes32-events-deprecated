@@ -20,7 +20,7 @@ describe('render()', function () {
     })
 
     it('template invalid', async function () {
-        const temp = path.resolve(testData, './Dir4/invalidTemplate.txt')
+        const temp = path.resolve(testData, './render/invalidTemplate.txt')
         await assert.rejects(render(temp, {}), Errors.TemplateInvalid)
     })
 
@@ -36,8 +36,8 @@ describe('render()', function () {
             { key: 'test', value: '2' },
             { key: 'test', value: '3' }
         ]
-        const temp = path.resolve(testData, './Dir4/testTemplate.xlsx')
-        const out = path.resolve(testData, './Dir4/test4.xlsx')
+        const temp = path.resolve(testData, './render/testTemplate.xlsx')
+        const out = path.resolve(testData, './render/test4.xlsx')
         const test = await render(temp, { data })
         await assert.doesNotReject(test.xlsx.writeFile(out))
         // TODO : read back the data to finish the test

@@ -1,8 +1,51 @@
 const assert = require('assert')
+const fs = require('fs')
 const path = require('path')
 const { list, Errors } = require('../src/list.js')
 
 const testData = path.resolve(__dirname, './testData')
+
+// robust functions to verify the tests
+const findAll = function (start) {
+    const result = []
+    const absolute = path.resolve(start)
+    const stat = fs.statSync(absolute)
+    if (stat.isDirectory()) {
+        const items = fs.readdirSync(absolute)
+        for (let iCnt = 0; iCnt < items.length; iCnt++) {
+            const newStart = path.resolve(start, items[iCnt])
+            result.push(...findAll(newStart))
+        }
+    } else {
+        result.push(start)
+    }
+    return result
+}
+const allFiles = findAll(testData)
+const jsFiles = allFiles.filter(function (file) {
+    return /\.js\b/i.test(file)
+})
+const jsonFiles = allFiles.filter(function (file) {
+    return /\.json\b/i.test(file)
+})
+const xlsxFiles = allFiles.filter(function (file) {
+    return /\.xlsx\b/i.test(file)
+})
+const findDirs = function (start) {
+    const result = []
+    const absolute = path.resolve(start)
+    const stat = fs.statSync(absolute)
+    if (stat.isDirectory()) {
+        result.push(absolute)
+        const items = fs.readdirSync(absolute)
+        for (let iCnt = 0; iCnt < items.length; iCnt++) {
+            const newStart = path.resolve(start, items[iCnt])
+            result.push(...findDirs(newStart))
+        }
+    }
+    return result
+}
+const allDirs = findDirs(testData)
 
 describe('list()', function () {
 
@@ -11,37 +54,37 @@ describe('list()', function () {
     })
 
     it('list all files', async function () {
-        const files = await list(testData)
-        assert.strictEqual(files.length, 10)
+        const testAllFiles = await list(testData)
+        assert.strictEqual(testAllFiles.length, allFiles.length)
     })
 
     it('list *.js file(s)', async function () {
-        const JsFiles = await list(testData, {
+        const testJsFiles = await list(testData, {
             matchers: [/\.js\b/i]
         })
-        assert.strictEqual(JsFiles.length, 3)
+        assert.strictEqual(testJsFiles.length, jsFiles.length)
     })
 
     it('list *.json file(s)', async function () {
-        const JsonFiles = await list(testData, {
+        const testJsonFiles = await list(testData, {
             matchers: [/\.json\b/i]
         })
-        assert.strictEqual(JsonFiles.length, 1)
+        assert.strictEqual(testJsonFiles.length, jsonFiles.length)
     })
 
     it('list *.xlsx file(s)', async function () {
-        const xlsxFiles = await list(testData, {
+        const testXlsxFiles = await list(testData, {
             matchers: [/\.xlsx\b/i]
         })
-        assert.strictEqual(xlsxFiles.length, 5)
+        assert.strictEqual(testXlsxFiles.length, xlsxFiles.length)
     })
 
-    it('should list dirs', async function () {
+    it('list all dirs', async function () {
         const dirs = await list(testData, {
             recurse: false,
             dirs: true
         })
-        assert.strictEqual(dirs.length, 4)
+        assert.strictEqual(dirs.length, allDirs.length - 1)
     })
 
 })
