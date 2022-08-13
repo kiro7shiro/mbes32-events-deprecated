@@ -5,6 +5,9 @@ const test5Config = {
     columns: [
         { index: 1, key: 'type', header: 'type' },
         { index: 2, key: 'value', header: 'value' }
+    ],
+    columnHeaders: [
+        ['type', 'value']
     ]
 }
 

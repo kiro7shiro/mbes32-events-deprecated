@@ -110,7 +110,7 @@ const configSchema = {
         if: { properties: { type: { type: 'string', pattern: 'object\\b' } } },
         then: { required: ['fields'] }
     },
-    additionalProperties: false
+    additionalProperties: true
 }
 
 const multiConfigSchema = {
@@ -163,7 +163,6 @@ class InconsistentSheetName extends ValidationError {
         this.name = 'InconsistentSheetName'
         this.key = 'worksheet'
         this.actual = worksheet
-        this.valid = config.worksheet
     }
 }
 
@@ -266,14 +265,25 @@ function adapt(config, errors) {
             const invalidName = errors.find(function (error) {
                 return error.name === 'InconsistentSheetName' && error.valid === config.worksheet
             })
-            if (invalidName) {
-                adaption.worksheet = invalidName.worksheet
-            }
-            const offset = errors.find(function (error) {
+            if (invalidName) adaption.worksheet = invalidName.worksheet
+            const invalidRowOffset = errors.find(function (error) {
                 return error.name === 'IncorrectRowOffset' && error.worksheet === adaption.worksheet
             })
-            if (offset) {
-                adaption.rowOffset = offset.valid
+            if (invalidRowOffset) adaption.rowOffset = invalidRowOffset.actual
+            if (adaption.columns) {
+                for (let cCnt = 0; cCnt < adaption.columns.length; cCnt++) {
+                    const column = adaption.columns[cCnt]
+                    const invalidColIndex = errors.find(function (error) {
+                        return error.name === 'IncorrectColumnIndex' && error.key === column.key
+                    })
+                    if (invalidColIndex) column.index = invalidColIndex.actual
+                }
+                const missingDataHeaders = errors.filter(function (error) {
+                    return error.name === 'DataHeaderNotInConfig'
+                })
+
+            } else {
+
             }
             // TODO : strategy for adapting empty values? set to zero or null string
             break
@@ -366,6 +376,38 @@ async function validate(filename, config) {
             if (columns) {
                 // testing columns
                 const { rowOffset } = config || 0
+                const { columnHeaders } = config || []
+                if (columnHeaders.length) {
+                    const step = columnHeaders.length
+                    for (let cCnt = 0; cCnt < cells.length; cCnt += step) {
+                        const rows = cells.slice(cCnt, cCnt + step)
+                        let found = false
+                        for (let rsCnt = 0; rsCnt < rows.length; rsCnt++) {
+                            const row = rows[rsCnt]
+                            if (row.length) {
+                                let headCnt = 0
+                                for (let rCnt = 0; rCnt < row.length; rCnt++) {
+                                    const cell = row[rCnt]
+                                    const columnHeader = columnHeaders[rsCnt][headCnt]
+                                    if (cell === columnHeader) {
+                                        // start comparing
+                                        found = true
+                                        headCnt++
+                                        if (headCnt === columnHeaders[rsCnt].length) {
+                                            break
+                                        }
+                                    } else {
+                                        found = false
+                                    }
+                                }
+                            }
+                            if (found && rsCnt === rows.length) {
+                                
+                            }
+                        }
+
+                    }
+                }
                 // get data headers if present
                 const headers = columns.reduce(function (prev, curr) {
                     if (curr.header) prev.push({
@@ -378,20 +420,20 @@ async function validate(filename, config) {
                 if (headers.length) {
                     // compare headers with data
                     for (let hCnt = 0; hCnt < headers.length; hCnt++) {
-                        const header = headers[hCnt]
-                        const compare = { index: header.index, rowOffset: rowOffset }
+                        const dataHeader = headers[hCnt]
+                        const compare = { index: dataHeader.index, rowOffset: rowOffset }
                         let found = false
                         // test each data row
                         for (let cCnt = 0; cCnt < cells.length; cCnt++) {
                             const row = cells[cCnt]
                             // search the dataHeader in the data row
-                            // decrease the firstHeaderIndex if needed
+                            // decrease the headerIndex if needed
                             // to test for left or right movement of the headers
                             let index = -1
-                            let firstHeaderIndex = headers[0].index || 1
-                            while (index < 0 && firstHeaderIndex >= 1) {
-                                index = row.indexOf(header.header, firstHeaderIndex - 1)
-                                firstHeaderIndex--
+                            let headerIndex = dataHeader.index || 1
+                            while (index < 0 && headerIndex >= 1) {
+                                index = row.indexOf(dataHeader.header, headerIndex - 1)
+                                headerIndex--
                             }
                             // if the dataHeader was found 
                             // save the index and rowOffset for comparison 
@@ -404,15 +446,15 @@ async function validate(filename, config) {
                             }
                         }
                         if (!found) {
-                            errors.push(new MissingDataHeader(filename, sheetName, header.key, header.header))
+                            errors.push(new MissingDataHeader(filename, sheetName, dataHeader.key, dataHeader.header))
                             // move on to the next header 
                             continue
                         }
                         if (compare.rowOffset !== rowOffset) {
-                            errors.push(new IncorrectRowOffset(filename, sheetName, header.key, compare.rowOffset))
+                            errors.push(new IncorrectRowOffset(filename, sheetName, dataHeader.key, compare.rowOffset))
                         }
-                        if (compare.index !== header.index) {
-                            errors.push(new IncorrectColumnIndex(filename, sheetName, header.key, compare.index))
+                        if (compare.index !== dataHeader.index) {
+                            errors.push(new IncorrectColumnIndex(filename, sheetName, dataHeader.key, compare.index))
                         }
                     }
                     // search for additional data headers not present in the config
@@ -428,7 +470,7 @@ async function validate(filename, config) {
                                 return header.header === dataHeader
                             })
                             if (!confHeader) {
-                                errors.push(new DataHeaderNotInConfig(filename, sheetName, dataHeader, hCnt))
+                                errors.push(new DataHeaderNotInConfig(filename, sheetName, dataHeader, hCnt + 1))
                             }
                         }
                     }

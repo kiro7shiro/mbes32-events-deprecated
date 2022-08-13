@@ -26,6 +26,9 @@ const tpkDatenConfig = {
         { index: 27, key: '2nd-technician', header: 'HVL_TVM' },
         { index: 28, key: '2nd-plm', header: 'HVL_PLM' },
         { index: 29, key: '2nd-security', header: 'HVL_SI' }
+    ],
+    columnHeaders: [
+        ['Mantelzeit ab', 'Aufbau ab', 'VA ab', 'VA bis', 'Abbau bis', 'Mantelzeit bis', 'Veranstaltung', 'Titel', 'Änderungstext', 'Kont.', 'Typ Veranstaltung', 'Status VR', 'ORT', 'PL', 'ESPK', 'TVM', 'PLM', 'Sicherheit', 'HVL_PL', 'HVL_ESPK', 'HVL_TVM', 'HVL_PLM', 'HVL_SI']
     ]
 }
 
