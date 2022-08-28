@@ -1,10 +1,12 @@
+const { isFilled } = require('xlsx-import/lib/mappers')
+
 const billConfig = {
     costs: {
         worksheet: 'Kostenzusammenstellung',
         type: 'object',
         fields: [
-            { row: 1, col: 1, key: 'event' },
-            { row: 7, col: 2, key: 'halls' },
+            { row: 1, col: 1, key: 'event', mapper: isFilled },
+            { row: 7, col: 2, key: 'halls', pattern: [['Hallen', { formula: 'blabla' }]] },
             { row: 8, col: 2, key: 'traffics' },
             { row: 9, col: 2, key: 'sanitary' },
             { row: 10, col: 2, key: 'toiletService' },
@@ -22,7 +24,7 @@ const billConfig = {
         type: 'list',
         rowOffset: 13,
         columns: [
-            { index: 1, key: 'name', header: 'Halle', },
+            { index: 1, key: 'name', header: 'Halle', mapper: isFilled },
             { index: 2, key: 'area', header: 'Fläche' },
             { index: 3, key: 'areaRate', header: 'Flächen-anteil' },
             { index: 4, key: 'setupCleaning', header: 'VR Aufbau' },
@@ -34,7 +36,7 @@ const billConfig = {
             { index: 10, key: 'postCleaning', header: 'Nach-reinig.' }
         ],
         columnHeaders: [
-            [     '',       '',               '',          '',             '',           '40%',          '100%',      '40%',     '100%',             ''],
+            ['', '', '', '', 'finale', '0.4', '1', '0.4', '1', ''],
             ['Halle', 'Fläche', 'Flächen-anteil', 'VR Aufbau', 'Vor- reinig.', 'lfd. VR Nacht', 'lfd. VR Nacht', 'lfd. Tag', 'lfd. Tag', 'Nach-reinig.']
         ]
     }

@@ -43,7 +43,9 @@ describe('analyze', async function () {
         it('incorrect column index', async function () {
             const filename = path.resolve(testData, './analyze/test5.xlsx')
             const config = Object.assign({}, require(path.resolve(testData, './analyze/test5Config.js')))
-            config.columns[0].index = 0
+            config.columnHeaders = [
+                ['value', 'type']
+            ]
             const errors = await validate(filename, config)
             //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'actual'])
             assert.throws(() => { throw errors[0] }, Errors.IncorrectColumnIndex)
@@ -52,7 +54,7 @@ describe('analyze', async function () {
         it('missing data header', async function () {
             const filename = path.resolve(testData, './analyze/test5.xlsx')
             const config = Object.assign({}, require(path.resolve(testData, './analyze/test5Config.js')))
-            config.columns[0].header = 'missing'
+            config.columnHeaders[0][0] = 'missing'
             const errors = await validate(filename, config)
             //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'actual'])
             assert.throws(() => { throw errors[0] }, Errors.MissingDataHeader)
@@ -61,7 +63,7 @@ describe('analyze', async function () {
         it('data header not in config', async function () {
             const filename = path.resolve(testData, './analyze/test5.xlsx')
             const config = Object.assign({}, require(path.resolve(testData, './analyze/test5Config.js')))
-            config.columns[0].header = 'missing'
+            config.columnHeaders[0][0] = 'missing'
             const errors = await validate(filename, config)
             //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'actual'])
             //assert(errors[1] instanceof Errors.DataHeaderNotInConfig)
@@ -77,7 +79,7 @@ describe('analyze', async function () {
         })
 
         it('test a valid file', async function () {
-            const filename = path.resolve(testData, './analyze/tpk-daten 2021-10-18.xlsx')
+            const filename = path.resolve(testData, './analyze/test7.xlsx')
             const config = Object.assign({}, require(path.resolve(testData, './analyze/tpk-daten-config.js')))
             const errors = await validate(filename, config)
             //console.table(errors, ['name', 'worksheet', 'key', 'header', 'index', 'actual'])
@@ -98,22 +100,27 @@ describe('analyze', async function () {
 
         it('config invalid')
 
-        it('adapt a config', async function () {
-            /* const file1 = path.resolve(testData, './analyze/tpk-daten 2022-08-01.xlsx')
+        it('adapt a single config', async function () {
+            const file1 = path.resolve(testData, './analyze/tpk-daten 2022-08-01.xlsx')
             const config1 = Object.assign({}, require(path.resolve(testData, './analyze/tpk-daten-config.js')))
             const errors1 = await validate(file1, config1)
             const adaption1 = await adapt(config1, errors1)
-            console.table(errors1, ['name', 'worksheet', 'key', 'header', 'index', 'actual'])
-            console.log({ adaption1 })
-            console.table(adaption1.columns) */
+            assert.strictEqual(adaption1.rowOffset, 0)
+        })
 
+        it('adapt a multi config', async function () {
             const file2 = path.resolve(testData, './analyze/WISAG Masterlayout 2022.xlsx')
             const config2 = Object.assign({}, require(path.resolve(testData, './analyze/wisagMasterConfig.js')))
             const errors2 = await validate(file2, config2)
             const adaption2 = await adapt(config2, errors2)
             console.table(errors2, ['name', 'worksheet', 'key', 'header', 'index', 'actual'])
-            console.log({ adaption2 })
-            console.table(adaption2.columns)
+        
+            for (const key in adaption2) {
+                const subConf = adaption2[key]
+                console.log({ key, subConf })
+                const tData = subConf.columns ? subConf.columns : subConf.fields
+                console.table(tData)
+            }
 
         })
 

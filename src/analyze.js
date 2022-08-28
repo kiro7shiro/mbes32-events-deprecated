@@ -159,10 +159,18 @@ class SheetMissing extends ValidationError {
 
 class InconsistentSheetName extends ValidationError {
     constructor(filename, worksheet, config) {
-        super(filename, worksheet, `Worksheet: ${config.worksheet} is present but named inconsistent.`)
+        super(filename, config.worksheet, `Worksheet: ${config.worksheet} is present but named inconsistent.`)
         this.name = 'InconsistentSheetName'
         this.key = 'worksheet'
         this.actual = worksheet
+    }
+}
+
+class ColumnHeadersNotFound extends ValidationError {
+    constructor(filename, worksheet) {
+        super(filename, worksheet, `Worksheet: ${worksheet} column headers not found.`)
+        this.name = 'ColumnHeadersNotFound'
+        this.key = 'columnHeaders'
     }
 }
 
@@ -263,14 +271,15 @@ function adapt(config, errors) {
         case !isColumns && !isFields:
             // adapt a single config
             const invalidName = errors.find(function (error) {
-                return error.name === 'InconsistentSheetName' && error.valid === config.worksheet
+                return error.name === 'InconsistentSheetName' && error.worksheet === config.worksheet
             })
-            if (invalidName) adaption.worksheet = invalidName.worksheet
+            if (invalidName) adaption.worksheet = invalidName.actual
             const invalidRowOffset = errors.find(function (error) {
                 return error.name === 'IncorrectRowOffset' && error.worksheet === adaption.worksheet
             })
             if (invalidRowOffset) adaption.rowOffset = invalidRowOffset.actual
             if (adaption.columns) {
+                // adapt columns
                 for (let cCnt = 0; cCnt < adaption.columns.length; cCnt++) {
                     const column = adaption.columns[cCnt]
                     const invalidColIndex = errors.find(function (error) {
@@ -357,7 +366,7 @@ async function validate(filename, config) {
             }
             // 3. check if fields or columns are present
             const sheet = workbook.getWorksheet(sheetName)
-            const cells = sheet.getRows(1, 1 + sheet.lastRow.number).reduce(function (prev, curr) {
+            const data = sheet.getRows(1, 1 + sheet.lastRow.number).reduce(function (prev, curr) {
                 prev.push(curr.values)
                 return prev
             }, []).map(function (row) {
@@ -378,101 +387,93 @@ async function validate(filename, config) {
                 const { rowOffset } = config || 0
                 const { columnHeaders } = config || []
                 if (columnHeaders.length) {
-                    const step = columnHeaders.length
-                    for (let cCnt = 0; cCnt < cells.length; cCnt += step) {
-                        const rows = cells.slice(cCnt, cCnt + step)
-                        let found = false
-                        for (let rsCnt = 0; rsCnt < rows.length; rsCnt++) {
-                            const row = rows[rsCnt]
-                            if (row.length) {
-                                let headCnt = 0
-                                for (let rCnt = 0; rCnt < row.length; rCnt++) {
-                                    const cell = row[rCnt]
-                                    const columnHeader = columnHeaders[rsCnt][headCnt]
-                                    if (cell === columnHeader) {
-                                        // start comparing
-                                        found = true
-                                        headCnt++
-                                        if (headCnt === columnHeaders[rsCnt].length) {
-                                            break
-                                        }
-                                    } else {
-                                        found = false
-                                    }
+                    // join headers and data into an array of strings for fuzzy search
+                    const joinedHeads = columnHeaders.reduce(function (joined, heads) {
+                        joined.push(heads.join(','))
+                        return joined
+                    }, []).join('\n')
+                    const joinedRows = data.reduce(function (joined, row) {
+                        joined.push(row.join(','))
+                        return joined
+                    }, [])
+                    // put the rows in pairs of headers.length separated by newline
+                    const expandedData = []
+                    for (let pCnt = 0; pCnt < joinedRows.length; pCnt++) {
+                        expandedData.push(joinedRows.slice(pCnt, pCnt + columnHeaders.length).join('\n'))
+                    }
+                    // search the header row
+                    const findHeaderRow = new Fuse(expandedData, {
+                        includeScore: true,
+                        location: 0,
+                        threshold: 0.7,
+                        distance: joinedHeads.length,
+                    })
+                    const [search] = findHeaderRow.search(joinedHeads)
+                    if (search) {
+                        const { item: found, refIndex, score } = search
+                        if (rowOffset - 1 !== refIndex) {
+                            errors.push(new IncorrectRowOffset(filename, sheetName, 'columnHeaders', refIndex))
+                        }
+                        // compare column indices
+                        // 1. split found back into cells
+                        const cells = found.split('\n').reduce(function (accu, curr) {
+                            accu.push(curr.split(','))
+                            return accu
+                        }, [])
+                        // 2. reduce headers and cells into one row
+                        const reduceToOneRow = function (accu, curr, index) {
+                            if (accu.length < curr.length) {
+                                const loop = curr.length - accu.length
+                                for (let i = 0; i < loop; i++) {
+                                    accu.push('')
                                 }
                             }
-                            if (found && rsCnt === rows.length) {
-                                
-                            }
-                        }
-
-                    }
-                }
-                // get data headers if present
-                const headers = columns.reduce(function (prev, curr) {
-                    if (curr.header) prev.push({
-                        key: curr.key,
-                        index: curr.index,
-                        header: curr.header
-                    })
-                    return prev
-                }, [])
-                if (headers.length) {
-                    // compare headers with data
-                    for (let hCnt = 0; hCnt < headers.length; hCnt++) {
-                        const dataHeader = headers[hCnt]
-                        const compare = { index: dataHeader.index, rowOffset: rowOffset }
-                        let found = false
-                        // test each data row
-                        for (let cCnt = 0; cCnt < cells.length; cCnt++) {
-                            const row = cells[cCnt]
-                            // search the dataHeader in the data row
-                            // decrease the headerIndex if needed
-                            // to test for left or right movement of the headers
-                            let index = -1
-                            let headerIndex = dataHeader.index || 1
-                            while (index < 0 && headerIndex >= 1) {
-                                index = row.indexOf(dataHeader.header, headerIndex - 1)
-                                headerIndex--
-                            }
-                            // if the dataHeader was found 
-                            // save the index and rowOffset for comparison 
-                            // and early break the row loop
-                            if (index > -1) {
-                                compare.index = index + 1
-                                compare.rowOffset = cCnt + 1
-                                found = true
-                                break
-                            }
-                        }
-                        if (!found) {
-                            errors.push(new MissingDataHeader(filename, sheetName, dataHeader.key, dataHeader.header))
-                            // move on to the next header 
-                            continue
-                        }
-                        if (compare.rowOffset !== rowOffset) {
-                            errors.push(new IncorrectRowOffset(filename, sheetName, dataHeader.key, compare.rowOffset))
-                        }
-                        if (compare.index !== dataHeader.index) {
-                            errors.push(new IncorrectColumnIndex(filename, sheetName, dataHeader.key, compare.index))
-                        }
-                    }
-                    // search for additional data headers not present in the config
-                    const incorrectRowOffset = errors.find(function (error) {
-                        return error.name === 'IncorrectRowOffset'
-                    })
-                    const headerRowIndex = incorrectRowOffset ? incorrectRowOffset.actual : rowOffset
-                    const headerRow = cells[headerRowIndex - 1]
-                    for (let hCnt = 0; hCnt < headerRow.length; hCnt++) {
-                        const dataHeader = headerRow[hCnt]
-                        if (dataHeader) {
-                            const confHeader = headers.find(function (header) {
-                                return header.header === dataHeader
+                            curr.map(function (value, idx) {
+                                accu[idx] += index === columnHeaders.length - 1 ? value : value + '\n'
                             })
-                            if (!confHeader) {
-                                errors.push(new DataHeaderNotInConfig(filename, sheetName, dataHeader, hCnt + 1))
+                            return accu
+                        }
+                        const columnHeads = columnHeaders.reduce(reduceToOneRow, [])
+                        const columnCells = cells.reduce(reduceToOneRow, [])
+                        // 3. fuzzy search each column header
+                        const findHeader = new Fuse(columnCells, {
+                            includeScore: true,
+                            location: 0,
+                            threshold: 0.3,
+                            distance: 0,
+                        })
+                        for (let cCnt = 0; cCnt < columnHeads.length; cCnt++) {
+                            // compare column indices and save differences
+                            const colHead = columnHeads[cCnt]
+                            findHeader.options.distance = colHead.length
+                            const [pose] = findHeader.search(colHead)
+                            if (pose) {
+                                const { refIndex } = pose
+                                const colOffset = config.columns[cCnt].index
+                                if (colOffset - 1 !== refIndex) {
+                                    errors.push(new IncorrectColumnIndex(filename, sheetName, config.columns[cCnt].key, refIndex + 1))
+                                }
+                            } else {
+                                errors.push(new MissingDataHeader(filename, sheetName, '', colHead))
                             }
                         }
+                        // 4. fuzzy search new data headers
+                        const findData = new Fuse(columnHeads, {
+                            includeScore: true,
+                            location: 0,
+                            threshold: 0.3,
+                            distance: 0,
+                        })
+                        for (let cCnt = 0; cCnt < columnCells.length; cCnt++) {
+                            const cell = columnCells[cCnt]
+                            findData.options.distance = cell.length
+                            const [pose] = findData.search(cell)
+                            if (!pose && cell !== '') {
+                                errors.push(new DataHeaderNotInConfig(filename, sheetName, cell, cCnt))
+                            }
+                        }
+                    } else {
+                        errors.push(new ColumnHeadersNotFound(filename, sheetName))
                     }
                 }
                 // TODO : validate list data
@@ -481,11 +482,13 @@ async function validate(filename, config) {
                 // testing fields
                 for (let fCnt = 0; fCnt < fields.length; fCnt++) {
                     const field = fields[fCnt]
-                    const cell = cells[field.row - 1][field.col - 1]
+                    const row = data[field.row - 1]
+                    const cell = row[field.col - 1]
                     if (!cell) {
                         errors.push(new InvalidData(filename, sheetName, field.key))
                     }
                 }
+                // TODO ; validate object data
             }
             break
 
