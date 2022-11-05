@@ -1,6 +1,6 @@
+node_modules
+test
 ~$*.xls*
 *.xlsx
-node_modules
 package-lock
-test/data
 settings.json
