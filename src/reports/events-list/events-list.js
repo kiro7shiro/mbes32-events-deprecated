@@ -60,7 +60,7 @@ module.exports = async function eventsList(settings) {
             
             break
         case selection.selectedText === 'enter time period ...':
-
+            // TODO: enter a time period
             break
         default:
 

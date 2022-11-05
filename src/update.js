@@ -38,6 +38,7 @@ async function update(target, source, { importer = {}, updater, exporter } = {})
             break
 
         case typeof result === 'object':
+            // TODO : make any *.xlsx object type check
             await result.xlsx.writeFile(path.format(targetFile))
             break
     }
