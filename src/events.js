@@ -2,11 +2,15 @@ const path = require('path')
 const Fuse = require('fuse.js')
 const { getEventsData } = require('./database.js')
 
+class Event {
+    constructor(data) { }
+}
+
 async function getFileInfos(filename) {
     const stat = await fs.promises.stat(filename)
-    const matches = Object.keys(matchers).reduce(function (prev, curr) {
-        prev[curr] = matchers[curr].test ? matchers[curr].test(filename) : undefined
-        return prev
+    const matches = Object.keys(matchers).reduce(function (accu, curr) {
+        accu[curr] = matchers[curr].test ? matchers[curr].test(filename) : undefined
+        return accu
     }, {})
 
     return Object.assign({}, stat, matches)
@@ -64,8 +68,4 @@ async function searchEvent(keyword) {
     return fuse.search(keyword)
 }
 
-module.exports = {
-    isEventFolder,
-    eventFolderName,
-    searchEvent
-}
+module.exports = { Event }
