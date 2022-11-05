@@ -8,7 +8,6 @@ const sysSepMatcher = new RegExp(`\\${path.sep}`, 'i')
 const pdfMatcher = /\.pdf$/i
 const xlsxMatcher = /\.xlsx$|\.xlsm$/i
 
-// TODO : move es32 specific's to own module
 const yearFolderMatcher = new RegExp(`${sysSepMatcher.source}\\d{4}$`, 'i')
 const eventFolderMatcher = new RegExp(
     `${sysSepMatcher.source}(eigenveranstaltung|ge2 kongresse|ge3 gast|interne vas|filmdreharbeiten|palais)${sysSepMatcher.source}`,
@@ -61,7 +60,7 @@ matchers.eventFolder.getName = function getName(filename) {
     return name
 }
 
-// .xlsx configuration schemas
+// .xlsx configuration schemas used by xlsx-import
 const columnsSchema = {
     $id: 'columns',
     type: 'array',
@@ -287,6 +286,7 @@ function adapt(config, errors) {
                     })
                     if (invalidColIndex) column.index = invalidColIndex.actual
                 }
+                // TODO : missing data headers
                 const missingDataHeaders = errors.filter(function (error) {
                     return error.name === 'DataHeaderNotInConfig'
                 })
@@ -341,6 +341,7 @@ async function validate(filename, config) {
                 await workbook.xlsx.readFile(filename)
             } catch (error) {
                 errors.push(error)
+                // early break out because we cannot access the file
                 break
             }
             // 2. check if worksheet is present
@@ -358,6 +359,7 @@ async function validate(filename, config) {
             const sheets = fuse.search(config.worksheet)
             if (!sheets.length) {
                 errors.push(new SheetMissing(filename, config.worksheet))
+                // early break out because we cannot access the sheet
                 break
             }
             const { item: sheetName, score } = sheets[0]
@@ -383,9 +385,16 @@ async function validate(filename, config) {
             })
             const { columns, fields } = config
             if (columns) {
-                // testing columns
-                const { rowOffset } = config || 0
-                const { columnHeaders } = config || []
+                // testing columns first tries to find the data header row
+                // by joining the data into an array of strings and then 
+                // makes a fuzzy search for the headers in the new array
+                // if the headers could be found it will test if the column
+                // headers are present and in the expected position
+                // saving any found differences as errors
+                // lastly it will try to find data headers that are not present
+                // in the config
+                const rowOffset = config.rowOffset > -1 ? config.rowOffset : 0
+                const columnHeaders = config.columnHeaders ? config.columnHeaders : []
                 if (columnHeaders.length) {
                     // join headers and data into an array of strings for fuzzy search
                     const joinedHeads = columnHeaders.reduce(function (joined, heads) {
@@ -409,10 +418,12 @@ async function validate(filename, config) {
                         distance: joinedHeads.length,
                     })
                     const [search] = findHeaderRow.search(joinedHeads)
-                    if (search) {
-                        const { item: found, refIndex, score } = search
+                    if (!search) {
+                        errors.push(new ColumnHeadersNotFound(filename, sheetName))
+                    } else {
+                        const { item: found, refIndex } = search
                         if (rowOffset - 1 !== refIndex) {
-                            errors.push(new IncorrectRowOffset(filename, sheetName, 'columnHeaders', refIndex))
+                            errors.push(new IncorrectRowOffset(filename, sheetName, 'columnHeaders', refIndex + 1))
                         }
                         // compare column indices
                         // 1. split found back into cells
@@ -420,7 +431,7 @@ async function validate(filename, config) {
                             accu.push(curr.split(','))
                             return accu
                         }, [])
-                        // 2. reduce headers and cells into one row
+                        // 2. reduce headers and cells into one row for fuzzy search
                         const reduceToOneRow = function (accu, curr, index) {
                             if (accu.length < curr.length) {
                                 const loop = curr.length - accu.length
@@ -449,9 +460,36 @@ async function validate(filename, config) {
                             const [pose] = findHeader.search(colHead)
                             if (pose) {
                                 const { refIndex } = pose
-                                const colOffset = config.columns[cCnt].index
-                                if (colOffset - 1 !== refIndex) {
-                                    errors.push(new IncorrectColumnIndex(filename, sheetName, config.columns[cCnt].key, refIndex + 1))
+                                const colOffset = config.columns[cCnt].index - 1
+                                if (colOffset !== refIndex) {
+                                    // TODO : swapped headers
+                                    // if fuzzy search fails. we try to find the header the hard way
+                                    // the hard way goes like this:
+                                    // first make a check string from the header and it's neighbors
+                                    // than go from left to right over the cell data and make a
+                                    // "look window" from the current position and it's neighbors
+                                    // if booth match we found the correct position 
+                                    const headIndex = columnHeads.indexOf(colHead)
+                                    const check = columnHeads.filter(function (cell, index) {
+                                        if (index === headIndex - 1 && headIndex) return true
+                                        if (index === headIndex) return true
+                                        if (index === headIndex + 1 && headIndex < columnHeads.length) return true
+                                        return false
+                                    }).join('|')
+                                    let window = []
+                                    let windowCnt = refIndex
+                                    do {
+                                        window = columnCells.filter(function (cell, index) {
+                                            if (index === windowCnt - 1 && cCnt) return true
+                                            if (index === windowCnt) return true
+                                            if (index === windowCnt + 1 && cCnt < columnHeads.length - 1) return true
+                                            return false
+                                        }).join('|')
+                                        windowCnt++
+                                    } while (check !== window && windowCnt + 1 <= columnCells.length - 1)
+                                    // if the hard way don't work, too. save the expected position instead
+                                    if (check !== window) windowCnt = colOffset + 1
+                                    errors.push(new IncorrectColumnIndex(filename, sheetName, config.columns[cCnt].key, windowCnt))
                                 }
                             } else {
                                 errors.push(new MissingDataHeader(filename, sheetName, '', colHead))
@@ -472,8 +510,6 @@ async function validate(filename, config) {
                                 errors.push(new DataHeaderNotInConfig(filename, sheetName, cell, cCnt))
                             }
                         }
-                    } else {
-                        errors.push(new ColumnHeadersNotFound(filename, sheetName))
                     }
                 }
                 // TODO : validate list data
@@ -484,11 +520,12 @@ async function validate(filename, config) {
                     const field = fields[fCnt]
                     const row = data[field.row - 1]
                     const cell = row[field.col - 1]
+                    // TODO : check mappers
                     if (!cell) {
                         errors.push(new InvalidData(filename, sheetName, field.key))
                     }
                 }
-                // TODO ; validate object data
+                // TODO : validate object data
             }
             break
 
@@ -508,3 +545,6 @@ module.exports = {
     validateMultiConfig,
     matchers
 }
+// validateData
+// validateListData
+// validateFieldData
