@@ -3,15 +3,13 @@ const path = require('path')
 const { list } = require('../../list.js')
 const { render } = require('../../render.js')
 const { update } = require('../../update.js')
-const { validate } = require('../../analyze.js')
 const terminal = require('terminal-kit').terminal
 
 const dataFilesMatcher = /tpk-daten[\s0-9\-]+\.xlsx\b/i
 
 module.exports = async function tpkDatabase(settings) {
 
-    // TODO : *.json files
-
+    // 1.
     // search for saved database file
     const check = fs.existsSync(settings['events-database'])
     if (!check) {
@@ -36,6 +34,7 @@ module.exports = async function tpkDatabase(settings) {
 
     }
 
+    // 2.
     // get dataFile(s) location
     terminal(`please enter a data file(s) location:\n`)
     const y = (await terminal.getCursorLocation())['y']
@@ -66,6 +65,7 @@ module.exports = async function tpkDatabase(settings) {
         return
     }
 
+    // 3.
     // update database
     fs.writeFileSync(`${path.format(dataStart)}/dataFiles.json`, JSON.stringify(files, null, 4))
     const sourceConfig = configs[0]

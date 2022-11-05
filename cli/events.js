@@ -8,10 +8,9 @@ program
     .command('search', 'search an event')
     .command('report', 'make an events report')
     .command('settings', 'set or get program settings')
-    .command('table', 'test a table')
 
 module.exports = {
-    cli: async function (args) {
+    cli: function (args) {
         args[1] = __filename // workaround for subcommands
         program.parse(args)
     }

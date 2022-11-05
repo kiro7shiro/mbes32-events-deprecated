@@ -137,6 +137,7 @@ module.exports = async function yearSummary(settings) {
         eta: true,
         percent: true
     })
+
     const data = []
     for (let fCnt = 0; fCnt < files.length; fCnt++) {
         const filename = files[fCnt]

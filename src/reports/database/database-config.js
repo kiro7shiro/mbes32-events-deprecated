@@ -1,4 +1,4 @@
-const parseDate = value => {
+const parseDate = function (value) {
     const [day, month, year] = value.split('.', 3).map(Number)
     return new Date(year, month - 1, day)
 }

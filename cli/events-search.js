@@ -22,18 +22,8 @@ program
 
         const eventsData = await getEventsData()
         const options = {
-            // isCaseSensitive: false,
             includeScore: true,
-            // shouldSort: true,
             includeMatches: true,
-            // findAllMatches: false,
-            // minMatchCharLength: keyword.length,
-            // location: 0,
-            // threshold: 0.2,
-            // distance: keyword.length + 1,
-            // useExtendedSearch: true,
-            // ignoreLocation: false,
-            // ignoreFieldNorm: false,
             keys: [
                 "matchcode",
                 "title"
